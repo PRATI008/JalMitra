@@ -1,0 +1,350 @@
+/* ================= HERO SECTION ================= */
+
+.hero{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Background Video */
+
+.hero-video{
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+/* Overlay */
+
+.overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        rgba(0,0,0,.60),
+        rgba(0,0,0,.45)
+    );
+}
+
+/* ================= HERO CONTENT ================= */
+
+.hero-content{
+
+    position:absolute;
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    width:90%;
+    max-width:900px;
+
+    text-align:center;
+
+    color:white;
+
+    z-index:5;
+
+    animation:heroFade 1.2s ease;
+
+}
+
+/* Offer Tag */
+
+.tag{
+
+    display:inline-block;
+
+    padding:10px 24px;
+
+    background:rgba(255,255,255,.15);
+
+    backdrop-filter:blur(10px);
+
+    border:1px solid rgba(255,255,255,.25);
+
+    border-radius:40px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    margin-bottom:25px;
+
+    color:white;
+
+}
+
+/* Heading */
+
+.hero-content h1{
+
+    font-size:64px;
+
+    font-weight:800;
+
+    line-height:1.2;
+
+    margin-bottom:20px;
+
+    text-shadow:0 8px 20px rgba(0,0,0,.45);
+
+}
+
+.hero-content h1 span{
+
+    color:#ff9f1c;
+
+}
+
+/* Paragraph */
+
+.hero-content p{
+
+    font-size:20px;
+
+    line-height:1.8;
+
+    margin-bottom:40px;
+
+    color:#f2f2f2;
+
+}
+
+/* ================= BUTTONS ================= */
+
+.hero-btns{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:18px;
+
+    flex-wrap:wrap;
+
+}
+
+/* Common Button */
+
+.order-btn,
+.plan-btn{
+
+    padding:15px 35px;
+
+    border-radius:50px;
+
+    border:none;
+
+    cursor:pointer;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    transition:.35s;
+
+}
+
+/* Order Button */
+
+.order-btn{
+
+    background:#ff6600;
+
+    color:white;
+
+    box-shadow:0 10px 25px rgba(255,102,0,.35);
+
+}
+
+.order-btn:hover{
+
+    transform:translateY(-5px);
+
+    background:#ff4500;
+
+}
+
+/* Plan Button */
+
+.plan-btn{
+
+    background:white;
+
+    color:#222;
+
+}
+
+.plan-btn:hover{
+
+    background:transparent;
+
+    color:white;
+
+    border:2px solid white;
+
+}
+
+/* ================= FEATURES ================= */
+
+.hero-features{
+
+    margin-top:45px;
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+}
+
+.hero-features div{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:12px 20px;
+
+    background:rgba(255,255,255,.15);
+
+    backdrop-filter:blur(8px);
+
+    border-radius:40px;
+
+    color:white;
+
+    transition:.35s;
+
+}
+
+.hero-features div:hover{
+
+    transform:translateY(-5px);
+
+    background:rgba(255,255,255,.25);
+
+}
+
+/* ================= ANIMATION ================= */
+
+@keyframes heroFade{
+
+    0%{
+
+        opacity:0;
+
+        transform:translate(-50%,-30%);
+
+    }
+
+    100%{
+
+        opacity:1;
+
+        transform:translate(-50%,-50%);
+
+    }
+
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:768px){
+
+.hero{
+
+height:100vh;
+
+}
+
+.hero-content{
+
+width:92%;
+
+}
+
+.hero-content h1{
+
+font-size:38px;
+
+}
+
+.hero-content p{
+
+font-size:16px;
+
+line-height:1.6;
+
+}
+
+.tag{
+
+font-size:13px;
+
+padding:8px 18px;
+
+}
+
+.hero-btns{
+
+flex-direction:column;
+
+}
+
+.order-btn,
+.plan-btn{
+
+width:100%;
+
+}
+
+.hero-features{
+
+gap:12px;
+
+}
+
+.hero-features div{
+
+font-size:13px;
+
+padding:10px 15px;
+
+}
+
+}
+
+/* ================= SMALL MOBILE ================= */
+
+@media(max-width:480px){
+
+.hero-content h1{
+
+font-size:30px;
+
+}
+
+.hero-content p{
+
+font-size:15px;
+
+}
+
+.tag{
+
+font-size:12px;
+
+}
+
+}

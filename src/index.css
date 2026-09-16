@@ -1,0 +1,88 @@
+:root {
+/* Brand Colors */
+  --primary: #0A8FDA;
+  --primary-dark: #087FC8;
+  --primary-light: #DFF8FD;
+
+  /* Aqua / Water Colors */
+  --aqua: #14C5E8;
+  --aqua-light: #E9FBFF;
+  --sky-blue: #8EE2F4;
+  --water-blue: #B8ECF7;
+
+  /* Background Colors */
+  --background: #FFFFFF;
+  --background-soft: #F5FBFD;
+  --background-blue: #EEF9FC;
+  --card-background: #FFFFFF;
+
+  /* Text Colors */
+  --text-dark: #073D69;
+  --text-primary: #12314D;
+  --text-secondary: #71869A;
+  --text-light: #9AAEB9;
+
+  /* Border Colors */
+  --border: #DCECF4;
+  --border-light: #E7F2F6;
+  --border-active: #64CCE6;
+
+  /* Status Colors */
+  --success: #13B783;
+  --success-light: #E9F8F2;
+
+  --warning: #F4A51C;
+  --warning-light: #FFF6DF;
+
+  --danger: #E65B63;
+  --danger-light: #FFF0F1;
+
+  /* Payment Colors */
+  --payment-blue: #0A8FDA;
+  --payment-green: #13B783;
+
+  /* Gradient Colors */
+  --gradient-water: linear-gradient(
+    135deg,
+    #E9FBFF,
+    #C9F2FB,
+    #8EE2F4
+  );
+
+  --gradient-primary: linear-gradient(
+    135deg,
+    #0A8FDA,
+    #14C5E8
+  );
+
+  --gradient-ocean: linear-gradient(
+    135deg,
+    #087FC8,
+    #0FC4E7
+  );
+
+  /* Shadows */
+  --shadow-soft: 0 8px 25px rgba(16, 86, 119, 0.08);
+
+  --shadow-card: 0 5px 16px rgba(26, 83, 112, 0.06);
+
+  --shadow-primary: 0 9px 20px rgba(10, 143, 218, 0.20);
+
+  /* Radius */
+  --radius-small: 10px;
+  --radius-medium: 14px;
+  --radius-large: 20px;
+  --radius-xl: 28px;
+
+  /* Layout */
+  --max-width: 620px;
+
+  /* Font */
+  --font-main:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
