@@ -2,6 +2,7 @@ import React from 'react'
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 import Home from './Pages/Home'
 import MyProfile from './Pages/MyProfile'
+import TrackOrder from './Pages/TrackOrder'
 
 const App = () => {
   return (
@@ -10,8 +11,8 @@ const App = () => {
     <Routes>
 
 <Route path='/' element={<Home/>} />
-<Route path='/myprofile' element={<MyProfile/>} />
-
+<Route path='/my-profile' element={<MyProfile/>} />
+<Route path='/trackorder'   element={<TrackOrder/>}/>
     </Routes>
    </Router>
    </>

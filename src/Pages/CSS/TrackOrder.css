@@ -1,0 +1,205 @@
+* {
+    box-sizing: border-box;
+}
+
+.track-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    background: #ffffff;
+    font-family: Arial, sans-serif;
+}
+
+.track-container {
+    width: 100%;
+    max-width: 430px;
+    min-height: 100vh;
+    padding: 16px 18px 30px;
+    overflow-y: auto;
+}
+
+.track-header {
+    height: 52px;
+    display: flex;
+    align-items: center;
+    gap: 17px;
+    border-bottom: 1px solid #edf5f8;
+}
+
+.track-back {
+    font-size: 25px;
+    color: #123f70;
+    cursor: pointer;
+}
+
+.track-header h2 {
+    margin: 0;
+    font-size: 25px;
+    color: #123f70;
+    font-weight: 700;
+}
+
+.order-info {
+    padding: 17px 4px 12px;
+}
+
+.order-info h3 {
+    margin: 0 0 6px;
+    font-size: 17px;
+    color: #123f70;
+}
+
+.order-info p {
+    margin: 0;
+    font-size: 15px;
+    color: #6b8698;
+}
+
+
+.timeline {
+    margin-top: 4px;
+}
+
+.timeline-item {
+    display: flex;
+    align-items: center;
+    min-height: 55px;
+    gap: 25px;
+}
+
+.timeline-line {
+    width: 2px;
+    height: 18px;
+    background: #1aa897;
+    margin-left: 12px;
+}
+
+.timeline-circle {
+    width: 35px;
+    height: 35px;
+    min-width: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.timeline-circle svg {
+    font-size: 14px;
+}
+
+
+
+.completed .timeline-circle {
+    background: #16a795;
+    color: white;
+}
+
+.completed .timeline-content h4 {
+    color: #123f70;
+}
+
+
+
+.active .timeline-circle {
+    width: 35px !important;
+    height: 35px !important;
+    min-width: 24px;
+    margin-left: -1.5px;
+    background: white;
+    padding: 2px;
+    color: #0788d1;
+    border: 5px solid #9bddf7;
+}
+
+.active .timeline-item {
+    min-height: 80px;
+}
+
+.active .timeline-content h4 {
+    color: #123f70;
+}
+
+
+
+.pending .timeline-circle {
+    background: white;
+    border: 2px solid #a8c3d0;
+    color: transparent;
+}
+
+.pending .timeline-content h4 {
+    color: #52718a;
+}
+
+.timeline-content {
+    padding-left: 17px;
+    height: 40px;
+    width: 50% !important;
+    border-radius: 50%;
+    padding: 2px;
+}
+
+.timeline-content h4 {
+    margin: 0 0 5px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #123f70;
+}
+
+.timeline-content p {
+    margin: 0;
+    font-size: 15px;
+    color: #7890a0;
+}
+
+
+.delivery-card {
+    margin-top: 30px;
+    padding: 17px 17px 15px;
+    min-height: 145px;
+    border-radius: 15px;
+    border: 1px solid #d7eeee;
+    background-color: #f2f6f9;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.delivery-route {
+    height: 35px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.delivery-truck {
+    font-size: 30px;
+    color: #168dc5;
+    margin-left: 5px;
+}
+
+.delivery-card h3 {
+    position: relative;
+    z-index: 1;
+    margin: 4px 0 9px;
+    font-size: 18px;
+    color: #0788c9;
+}
+
+.delivery-card p {
+    position: relative;
+    z-index: 1;
+    margin: 5px 0;
+    font-size: 15px;
+    color: #456477;
+    text-align: left;
+}
+
+.delivery-card strong {
+    color: #123f70;
+}
