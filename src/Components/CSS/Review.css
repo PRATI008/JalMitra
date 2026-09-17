@@ -1,0 +1,187 @@
+/* Reviews Section */
+
+.reviews-section {
+  width: 100%;
+  padding: 60px 20px;
+  background: #f5fbfd;
+  text-align: center;
+}
+
+
+/* Heading */
+
+.reviews-heading {
+  max-width: 600px;
+  margin: 0 auto 30px;
+}
+
+.reviews-small-title {
+  margin: 0 0 8px;
+  color: #159bc5;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.reviews-heading h2 {
+  margin: 0;
+  color: #164b63;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.reviews-description {
+  margin: 10px auto 0;
+  color: #6c8088;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+
+/* Review Card */
+
+.review-card {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 25px;
+  background: #ffffff;
+  border: 1px solid #e0edf0;
+  border-radius: 14px;
+  text-align: left;
+}
+
+
+/* User */
+
+.review-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.review-image {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.review-user h3 {
+  margin: 0 0 5px;
+  color: #244b59;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.stars {
+  color: #f2a623;
+  font-size: 15px;
+  letter-spacing: 2px;
+}
+
+
+/* Review Text */
+
+.review-text {
+  margin: 20px 0 15px;
+  color: #526b75;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+
+/* Verified Customer */
+
+.verified-review {
+  display: inline-block;
+  padding: 5px 9px;
+  background: #edf9fc;
+  color: #1684a8;
+  border-radius: 5px;
+  font-size: 11px;
+}
+
+
+/* Dots */
+
+.review-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 7px;
+  margin-top: 20px;
+}
+
+.review-dots span {
+  width: 7px;
+  height: 7px;
+  background: #c9dfe5;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.review-dots span.active {
+  width: 20px;
+  border-radius: 5px;
+  background: #159bc5;
+}
+
+
+/* Tablet */
+
+@media (max-width: 768px) {
+
+  .reviews-section {
+    padding: 50px 18px;
+  }
+
+  .reviews-heading h2 {
+    font-size: 26px;
+  }
+
+}
+
+
+/* Mobile */
+
+@media (max-width: 480px) {
+
+  .reviews-section {
+    padding: 45px 15px;
+  }
+
+  .reviews-heading {
+    margin-bottom: 25px;
+  }
+
+  .reviews-heading h2 {
+    font-size: 23px;
+  }
+
+  .reviews-description {
+    font-size: 13px;
+    padding: 0 10px;
+  }
+
+  .review-card {
+    padding: 20px;
+    border-radius: 12px;
+  }
+
+  .review-image {
+    width: 52px;
+    height: 52px;
+  }
+
+  .review-user h3 {
+    font-size: 15px;
+  }
+
+  .review-text {
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+}

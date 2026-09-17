@@ -1,0 +1,324 @@
+* {
+  box-sizing: border-box;
+}
+
+
+.search-page {
+  min-height: 100vh;
+  background: #f5fafc;
+  padding-bottom: 80px;
+}
+
+
+/* HEADER */
+
+.search-header {
+  height: 65px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 18px;
+  background: white;
+  border-bottom: 1px solid #e6eef1;
+}
+
+
+.search-header h2 {
+  margin: 0;
+  font-size: 18px;
+  color: #173d55;
+}
+
+
+.back-button {
+  border: none;
+  background: transparent;
+  font-size: 24px;
+  cursor: pointer;
+  color: #173d55;
+}
+
+
+/* SEARCH */
+
+.search-input-box {
+  margin: 18px 16px 12px;
+  padding: 13px 14px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  background: white;
+  border: 1px solid #dcebef;
+  border-radius: 12px;
+}
+
+
+.search-input-box svg {
+  color: #78929e;
+  font-size: 13px;
+}
+
+
+.search-input-box input {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 12px;
+  background: transparent;
+}
+
+
+/* FILTER */
+
+.search-filters {
+  display: flex;
+  gap: 8px;
+  padding: 4px 16px 10px;
+  overflow-x: auto;
+}
+
+
+.filter-btn {
+  white-space: nowrap;
+  border: 1px solid #d8e7ec;
+  background: white;
+  color: #55707d;
+  padding: 8px 13px;
+  border-radius: 20px;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+
+.filter-btn.active {
+  background: #1789d8;
+  border-color: #1789d8;
+  color: white;
+}
+
+
+/* RESULT */
+
+.result-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 16px 10px;
+}
+
+
+.result-title h3 {
+  margin: 0;
+  font-size: 17px;
+  color: #183f56;
+}
+
+
+.result-title span {
+  color: #83959d;
+  font-size: 11px;
+}
+
+
+/* SUPPLIER LIST */
+
+.search-supplier-list {
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+
+.search-supplier-card {
+  position: relative;
+  display: flex;
+  gap: 10px;
+  padding: 12px;
+  min-height: 110px;
+  background: white;
+  border-radius: 14px;
+  border: 1px solid #e1edf1;
+  box-shadow: 0 4px 15px rgba(30,80,100,0.05);
+}
+
+
+.supplier-image {
+  width: 68px;
+  height: 68px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #e2f6fb;
+  border-radius: 10px;
+  font-size: 30px;
+}
+.supplier-image img{
+  height: 60px;
+  width: 60px;
+
+}
+
+
+.search-supplier-info {
+  flex: 1;
+  padding-right: 45px;
+}
+
+
+.supplier-name-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+
+.supplier-name-row h3 {
+  margin: 0;
+  color: #17445e;
+  font-size: 13px;
+}
+
+
+.supplier-rating {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  color: #e8a51b;
+  font-size: 9px;
+}
+
+
+.supplier-location {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin: 5px 0;
+  color: #7b909a;
+  font-size: 9px;
+}
+
+
+.supplier-location svg {
+  color: #1889d8;
+}
+
+
+.supplier-water {
+  margin: 0;
+  color: #4e7180;
+  font-size: 9px;
+}
+
+
+.supplier-price {
+  margin: 6px 0 0;
+  color: #1688d7;
+  font-weight: 700;
+  font-size: 11px;
+}
+
+
+.supplier-price span {
+  color: #82939a;
+  font-size: 8px;
+  font-weight: 400;
+}
+
+
+/* VIEW BUTTON */
+
+.view-supplier-btn {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  border: none;
+  background: #1688d8;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 9px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+
+/* EMPTY */
+
+.empty-result {
+  padding: 40px 20px;
+  text-align: center;
+  background: white;
+  border-radius: 15px;
+}
+
+
+.empty-result div {
+  font-size: 40px;
+}
+
+
+.empty-result h3 {
+  margin: 8px 0 5px;
+}
+
+
+.empty-result p {
+  margin: 0;
+  color: #82939a;
+  font-size: 11px;
+}
+
+
+/* BOTTOM NAV */
+
+.bottom-navigation {
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 430px;
+  height: 65px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: white;
+  border-top: 1px solid #e3edf0;
+  z-index: 100;
+}
+
+
+.bottom-navigation button {
+  border: none;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  color: #83949d;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+
+.bottom-navigation button span {
+  font-size: 9px;
+}
+
+
+.bottom-navigation .nav-active {
+  color: #1688d8;
+}
+
+
+@media (min-width: 601px) {
+
+  .search-page {
+    max-width: 430px;
+    margin: auto;
+    box-shadow: 0 0 30px rgba(0,0,0,0.1);
+  }
+
+}
