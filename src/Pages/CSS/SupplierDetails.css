@@ -1,0 +1,257 @@
+/* Supplier Details Page */
+
+.supplier-details-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #f5fbfd;
+  padding-bottom: 30px;
+}
+
+
+/* Header */
+
+.supplier-details-header {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 0 18px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5eef1;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.supplier-details-header h2 {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 600;
+  color: #164b63;
+}
+
+.back-button {
+  width: 38px;
+  height: 38px;
+  border: none;
+  background: #eef9fc;
+  color: #176582;
+  border-radius: 8px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+
+/* Supplier Main Card */
+
+.supplier-main-card {
+  background: #ffffff;
+  margin: 18px 15px;
+  padding: 25px 18px;
+  border-radius: 14px;
+  text-align: center;
+  border: 1px solid #e3eef1;
+}
+
+.supplier-big-image {
+  width: 78px;
+  height: 78px;
+  margin: 0 auto 15px;
+  border-radius: 12px;
+  background: #e9f8fc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+}
+.supplier-big-image img{
+    height: 80px;
+    width: 60px;
+}
+
+.supplier-main-card h1 {
+  margin: 0 0 9px;
+  font-size: 22px;
+  font-weight: 600;
+  color: #173f50;
+  text-transform: capitalize;
+}
+
+.supplier-rating {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  color: #f4a623;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.supplier-location {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin: 0;
+  color: #536d78;
+  font-size: 14px;
+}
+
+.supplier-location svg {
+  color: #1594bd;
+  font-size: 17px;
+}
+
+.supplier-distance {
+  margin: 7px 0 0;
+  color: #7b8d94;
+  font-size: 13px;
+}
+
+
+/* Water Section */
+
+.water-section {
+  margin: 0 15px 16px;
+}
+
+.water-section h3 {
+  margin: 0 0 12px;
+  font-size: 17px;
+  font-weight: 600;
+  color: #214d5e;
+}
+
+.water-options {
+  display: flex;
+  gap: 10px;
+}
+
+.water-btn {
+  flex: 1;
+  min-height: 65px;
+  padding: 10px;
+  border: 1px solid #d7e7eb;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #42616d;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  font-size: 13px;
+}
+
+.water-btn:first-child {
+  font-size: 24px;
+}
+
+.water-btn span {
+  font-size: 13px;
+}
+
+.water-btn.active {
+  border: 1px solid #159bc5;
+  background: #edfaff;
+  color: #08749b;
+}
+
+
+/* Product Card */
+
+.product-card {
+  margin: 0 15px 20px;
+  padding: 17px;
+  background: #ffffff;
+  border: 1px solid #e0ecef;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.product-card h3 {
+  margin: 0 0 6px;
+  color: #244b59;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.product-card p {
+  margin: 0;
+  color: #71858d;
+  font-size: 13px;
+}
+
+.product-price {
+  color: #087da5;
+  font-size: 19px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.product-price span {
+  font-size: 12px;
+  font-weight: 400;
+  color: #71858d;
+}
+
+
+/* Proceed Button */
+
+.proceed-order-btn {
+  display: block;
+  width: calc(100% - 30px);
+  margin: 0 15px;
+  padding: 14px;
+  border: none;
+  border-radius: 9px;
+  background: #159bc5;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.proceed-order-btn:hover {
+  background: #118caf;
+}
+
+
+/* Mobile */
+
+@media (max-width: 480px) {
+
+  .supplier-details-header {
+    height: 58px;
+    padding: 0 15px;
+  }
+
+  .supplier-details-header h2 {
+    font-size: 18px;
+  }
+
+  .supplier-main-card {
+    margin: 15px 12px;
+    padding: 22px 15px;
+  }
+
+  .water-section {
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+
+  .product-card {
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+
+  .proceed-order-btn {
+    width: calc(100% - 24px);
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+}
