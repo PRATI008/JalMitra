@@ -1,16 +1,33 @@
 import React, { useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, NavLink } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
 import { MdLocationOn } from "react-icons/md";
-import "../Pages/CSS/SupplierDetails.css"
+import { FiArrowLeft } from "react-icons/fi";
+import { FaMinus, FaPlus } from "react-icons/fa6";
+import "../Pages/CSS/SupplierDetails.css";
 
 const SupplierDetails = () => {
 
   const navigate = useNavigate();
-
   const { id } = useParams();
 
+  // Water type
   const [waterType, setWaterType] = useState("Cold");
+
+  // Quantity
+  const [quantity, setQuantity] = useState(1);
+
+  // Order form show/hide
+  const [showOrderForm, setShowOrderForm] = useState(false);
+
+  // User details
+  const [userDetails, setUserDetails] = useState({
+    name: "",
+    mobile: "",
+    address: "",
+    location: "",
+    currentLocation: ""
+  });
 
   const suppliers = [
     {
@@ -59,10 +76,48 @@ const SupplierDetails = () => {
     return <h2>Supplier Not Found</h2>;
   }
 
+  // Quantity increase
+  const increaseQuantity = () => {
+    setQuantity(quantity + 1);
+  };
+
+  // Quantity decrease
+  const decreaseQuantity = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
+
+  // Total price
+  const totalPrice = supplier.price * quantity;
+
+  // Form input change
+  const handleChange = (e) => {
+    setUserDetails({
+      ...userDetails,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  // Form submit
+  const handleOrderSubmit = (e) => {
+    e.preventDefault();
+
+    navigate("/payment", {
+      state: {
+        supplier,
+        waterType,
+        quantity,
+        totalPrice,
+        userDetails
+      }
+    });
+  };
+
   return (
     <div className="supplier-details-page">
 
-      {/* Header */}
+      {/* ================= HEADER ================= */}
 
       <div className="supplier-details-header">
 
@@ -70,7 +125,9 @@ const SupplierDetails = () => {
           onClick={() => navigate("/search-bar")}
           className="back-button"
         >
-          ←
+          <NavLink to="/search-bar">
+            <FiArrowLeft className="track-back" />
+          </NavLink>
         </button>
 
         <h2>Supplier Details</h2>
@@ -78,12 +135,12 @@ const SupplierDetails = () => {
       </div>
 
 
-      {/* Supplier Info */}
+      {/* ================= SUPPLIER INFO ================= */}
 
       <div className="supplier-main-card">
 
         <div className="supplier-big-image">
-        <img src="/bund.png" alt="" />
+          <img src="/bund.png" alt="Water Supplier" />
         </div>
 
         <h1>{supplier.name}</h1>
@@ -111,7 +168,7 @@ const SupplierDetails = () => {
       </div>
 
 
-      {/* Water Type */}
+      {/* ================= WATER TYPE ================= */}
 
       <div className="water-section">
 
@@ -159,7 +216,7 @@ const SupplierDetails = () => {
       </div>
 
 
-      {/* Product */}
+      {/* ================= PRODUCT ================= */}
 
       <div className="product-card">
 
@@ -186,14 +243,219 @@ const SupplierDetails = () => {
       </div>
 
 
-      {/* Order Button */}
+      {/* ================= QUANTITY ================= */}
 
-      <button
-        className="proceed-order-btn"
-        onClick={() => navigate("/order")}
-      >
-        Proceed to Order
-      </button>
+      <div className="quantity-section">
+
+        <div className="quantity-info">
+
+          <h3>Quantity</h3>
+
+          <p>20L Water Can</p>
+
+        </div>
+
+        <div className="quantity-control">
+
+          <button
+            onClick={decreaseQuantity}
+            disabled={quantity === 1}
+          >
+            <FaMinus />
+          </button>
+
+          <span>{quantity}</span>
+
+          <button onClick={increaseQuantity}>
+            <FaPlus />
+          </button>
+
+        </div>
+
+      </div>
+
+
+      {/* ================= TOTAL ================= */}
+
+      <div className="total-price-box">
+
+        <div>
+
+          <span>Total Quantity</span>
+
+          <strong>{quantity} × 20L</strong>
+
+        </div>
+
+        <div className="total-amount">
+
+          <span>Total Amount</span>
+
+          <strong>₹{totalPrice}</strong>
+
+        </div>
+
+      </div>
+
+
+      {/* ================= PROCEED BUTTON ================= */}
+
+      {!showOrderForm && (
+
+        <button
+          className="proceed-order-btn"
+          onClick={() => setShowOrderForm(true)}
+        >
+          Proceed to Order
+        </button>
+
+      )}
+
+
+      {/* ================= ORDER FORM ================= */}
+
+      {showOrderForm && (
+
+        <div className="order-form-section">
+
+          <div className="form-heading">
+
+            <h2>Delivery Details</h2>
+
+            <p>
+              Enter your details for water delivery
+            </p>
+
+          </div>
+
+
+          <form onSubmit={handleOrderSubmit}>
+
+            {/* Name */}
+
+            <div className="form-group">
+
+              <label>Your Name</label>
+
+              <input
+                type="text"
+                name="name"
+                placeholder="Enter your name"
+                value={userDetails.name}
+                onChange={handleChange}
+                required
+              />
+
+            </div>
+
+
+            {/* Mobile */}
+
+            <div className="form-group">
+
+              <label>Mobile Number</label>
+
+              <input
+                type="tel"
+                name="mobile"
+                placeholder="Enter mobile number"
+                value={userDetails.mobile}
+                onChange={handleChange}
+                required
+              />
+
+            </div>
+
+
+            {/* Address */}
+
+            <div className="form-group">
+
+              <label>Delivery Address</label>
+
+              <textarea
+                name="address"
+                placeholder="Enter your complete address"
+                value={userDetails.address}
+                onChange={handleChange}
+                required
+              ></textarea>
+
+            </div>
+
+
+            {/* Location */}
+
+            <div className="form-group">
+
+              <label>Area / Location</label>
+
+              <input
+                type="text"
+                name="location"
+                placeholder="Example: Aliganj, Lucknow"
+                value={userDetails.location}
+                onChange={handleChange}
+                required
+              />
+
+            </div>
+
+
+            {/* Current Location */}
+
+            <div className="form-group">
+
+              <label>Current Location</label>
+
+              <input
+                type="text"
+                name="currentLocation"
+                placeholder="Enter your current location"
+                value={userDetails.currentLocation}
+                onChange={handleChange}
+                required
+              />
+
+            </div>
+
+
+            {/* Order Summary */}
+
+            <div className="form-order-summary">
+
+              <div>
+                <span>Water Type</span>
+                <strong>{waterType} Water</strong>
+              </div>
+
+              <div>
+                <span>Quantity</span>
+                <strong>{quantity} × 20L</strong>
+              </div>
+
+              <div>
+                <span>Total Amount</span>
+                <strong>₹{totalPrice}</strong>
+              </div>
+
+            </div>
+
+
+            {/* Continue Payment */}
+
+            <button
+              type="submit"
+              className="continue-payment-btn"
+            >
+              Continue to Payment
+            </button>
+
+          </form>
+
+        </div>
+
+      )}
 
     </div>
   );

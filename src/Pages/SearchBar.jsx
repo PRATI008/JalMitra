@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import "../Pages/CSS/SearchBar.css"
 import { FaSearch, FaStar } from "react-icons/fa";
 import { MdLocationOn } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
+import {FiArrowLeft} from "react-icons/fi";
+import Footer from '../Components/Footer';
 
 const SearchBar = () => {
 
@@ -89,7 +91,7 @@ const SearchBar = () => {
           onClick={() => navigate("/home")}
           className="back-button"
         >
-          ←
+          <NavLink to='/home'> <FiArrowLeft className="track-back" /></NavLink>
         </button>
 
 
@@ -345,7 +347,7 @@ const SearchBar = () => {
 
 
     </div>
-
+<Footer/>
 
    </>
   )

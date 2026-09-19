@@ -1,74 +1,73 @@
-* {
-    box-sizing: border-box;
-}
-
 .profile-page {
+    width: 100%;
     min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    font-family: Arial, sans-serif;
-    overflow-y: auto;
+    padding: 0 15px 90px;
+    background: #f5fbfd;
 }
 
 .profile-container {
     width: 100%;
-    max-width: 430px;
-    min-height: 100vh;
-    position: relative;
-    padding: 18px 16px 100px;
+    max-width: 500px;
+    margin: 0 auto;
 }
 
+
+/* Header */
+
 .profile-header {
-    height: 55px;
+    width: 100%;
+    height: 65px;
     display: flex;
     align-items: center;
-    gap: 18px;
-    margin-bottom: 15px;
+}
+
+.profile-header a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
 }
 
 .back-icon {
-    font-size: 24px;
-    color: #123f70;
-    cursor: pointer;
+    font-size: 21px;
+    color: #164b63;
 }
 
 .profile-header h2 {
-    margin: 0;
-    font-size: 21px;
-    color: #123f70;
-    font-weight: 700;
+    margin: 0 0 0 14px;
+    color: #164b63;
+    font-size: 20px;
+    font-weight: 600;
 }
+
+
+/* User Card */
 
 .user-card {
     width: 100%;
-    background: rgba(255, 255, 255, 0.95);
-    border: 1px solid #c9ebfa;
-    border-radius: 18px;
-    padding: 17px 15px;
+    padding: 18px;
     display: flex;
     align-items: center;
-    gap: 17px;
-    box-shadow: 0 3px 12px rgba(0, 130, 190, 0.07);
-    margin-bottom: 18px;
+    gap: 14px;
+    background: #ffffff;
+    border: 1px solid #dfedf1;
+    border-radius: 14px;
+    box-shadow: 0 3px 12px rgba(31, 94, 111, 0.05);
 }
 
 .user-image {
-    width: 72px;
-    height: 72px;
-    min-width: 72px;
+    width: 62px;
+    height: 62px;
+    flex-shrink: 0;
     border-radius: 50%;
-    background: #dff4ff;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+    background: #e7f8fc;
+    color: #159bc5;
 }
 
-.user-image .user-img {
-    width: 48px;
-    height: 48px;
-    color: #07518a;
-    fill: #07518a;
+.user-img {
+    font-size: 30px;
 }
 
 .user-info {
@@ -76,92 +75,217 @@
 }
 
 .user-info h3 {
-    margin: 0 0 7px;
-    color: #123f70;
-    font-size: 18px;
-    font-weight: 700;
+    margin: 0 0 8px;
+    color: #164b63;
+    font-size: 17px;
+    font-weight: 600;
 }
 
 .user-info p {
-    margin: 5px 0;
-    color: #52718a;
-    font-size: 15px;
+    margin: 4px 0;
     display: flex;
     align-items: center;
-    gap: 7px;
-    overflow: hidden;
+    gap: 6px;
+    color: #71858d;
+    font-size: 11px;
 }
 
 .user-info p span {
-    color: #07518a;
+    display: flex;
+    align-items: center;
+    color: #159bc5;
+}
 
+.user-info p svg {
     font-size: 14px;
 }
 
 
+/* Saved Details */
 
-.profile-menu {
+.saved-details {
+    width: 100%;
+    margin-top: 16px;
+    padding: 17px;
+    background: #ffffff;
+    border: 1px solid #dfedf1;
+    border-radius: 14px;
+    box-shadow: 0 3px 12px rgba(31, 94, 111, 0.04);
+}
+
+.saved-details > h3 {
+    margin: 0 0 14px;
+    color: #164b63;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+
+/* Single Detail */
+
+.saved-detail-item {
+    width: 100%;
+    min-height: 55px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid #edf2f3;
+}
+
+.saved-detail-item:last-child {
+    border-bottom: none;
+}
+
+.saved-detail-icon {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #eaf9fc;
+    color: #159bc5;
+}
+
+.saved-detail-icon svg {
+    font-size: 17px;
+}
+
+.saved-detail-info {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 3px;
+    min-width: 0;
+}
+
+.saved-detail-info span {
+    color: #81949c;
+    font-size: 10px;
+}
+
+.saved-detail-info strong {
+    color: #365864;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.4;
+    word-break: break-word;
+}
+
+
+/* Profile Menu */
+
+.profile-menu {
+    width: 100%;
+    margin-top: 16px;
+    padding: 4px 15px;
+    background: #ffffff;
+    border: 1px solid #dfedf1;
+    border-radius: 14px;
+    box-shadow: 0 3px 12px rgba(31, 94, 111, 0.04);
 }
 
 .profile-menu-item {
-    min-height: 61px;
-    background: rgba(255, 255, 255, 0.96);
-    border: 1px solid #c9ebfa;
-    border-radius: 16px;
-    padding: 9px 14px;
+    width: 100%;
+    min-height: 55px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0 2px 8px rgba(0, 130, 190, 0.05);
+    border-bottom: 1px solid #edf2f3;
+    text-decoration: none;
     cursor: pointer;
-    transition: 0.2s;
 }
 
-.profile-menu-item:active {
-    transform: scale(0.98);
+.profile-menu-item:last-child {
+    border-bottom: none;
 }
 
 .menu-left {
     display: flex;
     align-items: center;
-    gap: 15px;
-}
-
-.menu-left span {
-    font-size: 15px;
-    font-weight: 600;
-    color: #123f70;
+    gap: 12px;
 }
 
 .menu-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: #e2f5ff;
+    width: 34px;
+    height: 34px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #07518a;
-    font-size: 20px;
+    border-radius: 8px;
+    background: #eaf9fc;
+    color: #159bc5;
+}
+
+.menu-icon svg {
+    font-size: 17px;
+}
+
+.menu-left span {
+    color: #365864;
+    font-size: 12px;
+    font-weight: 500;
 }
 
 .chevron {
-    color: #126090;
-    font-size: 20px;
+    color: #9aabb1;
+    font-size: 17px;
 }
 
-.logout-item {
-    margin-top: 1px;
+
+/* Logout */
+
+.logout-item .menu-icon {
+    background: #fff0f0;
+    color: #df5b5b;
 }
 
 .logout-item .menu-left span {
-    color: #e53935;
+    color: #df5b5b;
 }
 
-.logout-icon {
-    background: #ffe8e8;
-    color: #e53935;
+
+/* Mobile */
+
+@media (max-width: 480px) {
+
+    .profile-page {
+        padding-left: 13px;
+        padding-right: 13px;
+        padding-bottom: 90px;
+    }
+
+    .profile-header {
+        height: 62px;
+    }
+
+    .profile-header h2 {
+        font-size: 19px;
+    }
+
+    .user-card {
+        padding: 16px;
+    }
+
+    .user-image {
+        width: 58px;
+        height: 58px;
+    }
+
+    .user-img {
+        font-size: 28px;
+    }
+
+    .user-info h3 {
+        font-size: 16px;
+    }
+
+    .saved-details {
+        padding: 15px;
+    }
+
+    .profile-menu {
+        padding: 3px 13px;
+    }
+
 }

@@ -1,0 +1,286 @@
+.order-page {
+  width: 100%;
+  min-height: 100vh;
+  padding: 0 15px 90px;
+  background: #f5fbfd;
+}
+
+
+/* Header */
+
+.order-header {
+    height: 65px;
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  justify-content: space-between;
+  padding: 0 20px;
+  background: white;
+  border-bottom: 1px solid #e6eef1;
+}
+
+.order-back{
+    font-size: 20px;
+    color: black;
+}
+
+.order-header h2 {
+  margin: 0;
+
+  color: black;
+
+  font-size: 20px;
+  font-weight: 600;
+}
+
+
+/* ================================
+   Empty Order
+================================ */
+
+.empty-order {
+  min-height: 65vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+.empty-order-icon {
+  width: 75px;
+  height: 75px;
+
+  border-radius: 50%;
+
+  background: #eaf9fc;
+  color: #159bc5;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-order-icon svg {
+  font-size: 34px;
+}
+
+.empty-order h2 {
+  margin: 18px 0 7px;
+
+  color: #164b63;
+
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.empty-order p {
+  max-width: 260px;
+
+  margin: 0;
+
+  color: #7a8d94;
+
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.empty-order button {
+  margin-top: 20px;
+
+  padding: 11px 25px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #159bc5;
+  color: white;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+
+/* ================================
+   Order Card
+================================ */
+
+.order-card {
+  width: 100%;
+
+  padding: 16px;
+
+  background: #ffffff;
+
+  border: 1px solid #dfedf1;
+  border-radius: 13px;
+
+  box-shadow: 0 3px 12px rgba(31, 94, 111, 0.04);
+}
+
+
+/* Top */
+
+.order-card-top {
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  padding-bottom: 13px;
+
+  border-bottom: 1px solid #edf2f3;
+}
+
+.order-card-top div:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.order-card-top span {
+  color: #81949c;
+
+  font-size: 10px;
+}
+
+.order-card-top strong {
+  color: #164b63;
+
+  font-size: 14px;
+}
+
+.order-status {
+  padding: 5px 9px;
+
+  border-radius: 6px;
+
+  background: #e3f8ee;
+  color: #16845d;
+
+  font-size: 10px;
+  font-weight: 600;
+}
+
+
+/* Supplier */
+
+.order-supplier {
+  padding: 15px 0;
+
+  border-bottom: 1px solid #edf2f3;
+}
+
+.order-supplier h3 {
+  margin: 0 0 6px;
+
+  color: #244b59;
+
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.order-supplier p {
+  margin: 0;
+
+  color: #71858d;
+
+  font-size: 11px;
+
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.order-supplier p svg {
+  color: #159bc5;
+}
+
+
+/* Details */
+
+.order-details {
+  padding: 14px 0;
+}
+
+.order-details > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 7px 0;
+}
+
+.order-details span {
+  color: #7a8d94;
+
+  font-size: 11px;
+}
+
+.order-details strong {
+  color: #365864;
+
+  font-size: 12px;
+
+  text-align: right;
+}
+
+.order-details .order-total {
+  color: #159bc5;
+
+  font-size: 19px;
+}
+
+
+/* Track Button */
+
+.order-track-btn {
+  width: 100%;
+
+  height: 44px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #159bc5;
+
+  color: #ffffff;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  cursor: pointer;
+}
+
+
+/* Details Button */
+
+.order-details-btn {
+  width: 100%;
+
+  height: 42px;
+
+  margin-top: 9px;
+
+  border: 1px solid #159bc5;
+  border-radius: 8px;
+
+  background: #ffffff;
+
+  color: #159bc5;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+}

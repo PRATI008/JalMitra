@@ -1,111 +1,277 @@
-import React from 'react'
+import React from "react";
+
 import {
-    FiArrowLeft,
-    FiCheck,
-    FiTruck,
-    FiCircle
+  FiArrowLeft,
+  FiCheck,
+  FiTruck,
+  FiCircle
 } from "react-icons/fi";
-import './CSS/TrackOrder.css'
-import {NavLink} from 'react-router-dom'
+
+import {
+  useLocation,
+  useNavigate
+} from "react-router-dom";
+
+import "./CSS/TrackOrder.css";
+
+import Footer from "../Components/Footer";
+
+
 const TrackOrder = () => {
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+
+  // Pehle navigation state check
+  const savedOrder = localStorage.getItem("jalmitraOrder");
+
+  const order = location.state
+    || (savedOrder ? JSON.parse(savedOrder) : null);
+
+
+  // Agar order nahi hai
+  if (!order) {
+
     return (
-        <>
-            <div className="track-page">
+      <>
+        <div className="track-empty">
 
-                <div className="track-container">
+          <h2>No Active Order</h2>
 
-                    <div className="track-header">
-                  <NavLink to='/my-profile'> <FiArrowLeft className="track-back" /></NavLink>
-                        <h2>Track Order</h2>
-                    </div>
+          <p>
+            You haven't placed any order yet.
+          </p>
 
-                    <div className="order-info">
-                        <h3>Order #JM12345</h3>
-                        <p>Placed on 10 Apr 2025&nbsp; • &nbsp;10:30 AM</p>
-                    </div>
+          <button
+            onClick={() => navigate("/search-bar")}
+          >
+            Find Water
+          </button>
 
-                    <div className="timeline">
+        </div>
 
-                        <div className="timeline-item completed">
-                            <div className="timeline-circle">
-                                <FiCheck />
-                            </div>
-
-                            <div className="timeline-content">
-                                <h4>Order Placed</h4>
-                                <p>10 Apr 2025 • 10:30 AM</p>
-                            </div>
-                        </div>
-
-                        <div className="timeline-line"></div>
+        <Footer />
+      </>
+    );
+  }
 
 
-                        <div className="timeline-item completed">
-                            <div className="timeline-circle">
-                                <FiCheck />
-                            </div>
+  return (
+    <>
+      <div className="track-page">
 
-                            <div className="timeline-content">
-                                <h4>Accepted by Supplier</h4>
-                                <p>10 Apr 2025 • 11:15 AM</p>
-                            </div>
-                        </div>
-
-                        <div className="timeline-line"></div>
+        <div className="track-container">
 
 
-                        <div className="timeline-item active">
-                            <div className="timeline-circle">
-                                <FiTruck />
-                            </div>
+          {/* Header */}
 
-                            <div className="timeline-content">
-                                <h4>Out for Delivery</h4>
-                                <p>10 Apr 2025 • 03:20 PM</p>
-                            </div>
-                        </div>
+          <div className="track-header">
 
-                        <div className="timeline-line"></div>
+            <button
+              onClick={() => navigate("/order")}
+              className="track-back-btn"
+            >
+              <FiArrowLeft />
+            </button>
 
+            <h2>Track Order</h2>
 
-                        <div className="timeline-item pending">
-                            <div className="timeline-circle">
-                                <FiCircle />
-                            </div>
-
-                            <div className="timeline-content">
-                                <h4>Delivered</h4>
-                                <p>Expected by 10 Apr 2025 • 06:00 PM</p>
-                            </div>
-                        </div>
-
-                    </div>
+          </div>
 
 
-                    <div className="delivery-card">
+          {/* Order Info */}
 
-                        <div className="delivery-route">
-                          
-                            <FiTruck className="delivery-truck" />
-                        </div>
+          <div className="order-info">
 
-                        <h3>Your order is on the way!</h3>
+            <h3>
+              Order #{order.orderId}
+            </h3>
 
-                        <p>
-                            <strong>Delivery partner:</strong> Shalu Kushwaha
-                        </p>
+            <p>
+              {order.orderDate}
+              &nbsp; • &nbsp;
+              {order.orderTime}
+            </p>
 
-                        <p>
-                            <strong>Contact:</strong> 45665 12454
-                        </p>
+          </div>
 
-                    </div>
 
-                </div>
+          {/* Supplier */}
+
+          <div className="track-supplier">
+
+            <h3>
+              {order.supplier.name}
+            </h3>
+
+            <p>
+              {order.waterType} Water •{" "}
+              {order.quantity} × 20L
+            </p>
+
+          </div>
+
+
+          {/* Timeline */}
+
+          <div className="timeline">
+
+
+            {/* Order Placed */}
+
+            <div className="timeline-item completed">
+
+              <div className="timeline-circle">
+                <FiCheck />
+              </div>
+
+              <div className="timeline-content">
+
+                <h4>Order Placed</h4>
+
+                <p>
+                  Your order has been placed successfully.
+                </p>
+
+              </div>
 
             </div>
-        </>
-    )
-}
 
-export default TrackOrder
+
+            <div className="timeline-line"></div>
+
+
+            {/* Accepted */}
+
+            <div className="timeline-item completed">
+
+              <div className="timeline-circle">
+                <FiCheck />
+              </div>
+
+              <div className="timeline-content">
+
+                <h4>Accepted by Supplier</h4>
+
+                <p>
+                  Supplier will confirm your order.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div className="timeline-line"></div>
+
+
+            {/* Preparing */}
+
+            <div className="timeline-item active">
+
+              <div className="timeline-circle">
+                <FiTruck />
+              </div>
+
+              <div className="timeline-content">
+
+                <h4>Preparing</h4>
+
+                <p>
+                  Your water is being prepared.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div className="timeline-line"></div>
+
+
+            {/* Delivery */}
+
+            <div className="timeline-item pending">
+
+              <div className="timeline-circle">
+                <FiCircle />
+              </div>
+
+              <div className="timeline-content">
+
+                <h4>Out for Delivery</h4>
+
+                <p>
+                  Delivery partner will pick up your order.
+                </p>
+
+              </div>
+
+            </div>
+
+
+            <div className="timeline-line"></div>
+
+
+            {/* Delivered */}
+
+            <div className="timeline-item pending">
+
+              <div className="timeline-circle">
+                <FiCircle />
+              </div>
+
+              <div className="timeline-content">
+
+                <h4>Delivered</h4>
+
+                <p>
+                  Waiting for delivery.
+                </p>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          {/* Delivery Card */}
+
+          <div className="delivery-card">
+
+            <div className="delivery-route">
+
+              <FiTruck className="delivery-truck" />
+
+            </div>
+
+            <h3>
+              Your order is being processed!
+            </h3>
+
+            <p>
+              <strong>Supplier:</strong>{" "}
+              {order.supplier.name}
+            </p>
+
+            <p>
+              <strong>Location:</strong>{" "}
+              {order.supplier.location}
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <Footer />
+
+    </>
+  );
+};
+
+
+export default TrackOrder;
