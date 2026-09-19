@@ -1,205 +1,438 @@
-* {
-    box-sizing: border-box;
-}
+/* =================================
+   JalMitra - Track Order
+================================= */
 
 .track-page {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    background: #ffffff;
-    font-family: Arial, sans-serif;
+  width: 100%;
+  min-height: 100vh;
+
+  padding: 0 15px 95px;
+
+  background: #f5fbfd;
 }
+
+
+/* =================================
+   Container
+================================= */
 
 .track-container {
-    width: 100%;
-    max-width: 430px;
-    min-height: 100vh;
-    padding: 16px 18px 30px;
-    overflow-y: auto;
+  width: 100%;
 }
+
+
+/* =================================
+   Header
+================================= */
 
 .track-header {
-    height: 52px;
-    display: flex;
-    align-items: center;
-    gap: 17px;
-    border-bottom: 1px solid #edf5f8;
-}
+  width: 100%;
+  height: 65px;
 
-.track-back {
-    font-size: 25px;
-    color: #123f70;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+
+  position: relative;
 }
 
 .track-header h2 {
-    margin: 0;
-    font-size: 25px;
-    color: #123f70;
-    font-weight: 700;
+  margin: 0 0 0 12px;
+
+  color: #164b63;
+
+  font-size: 20px;
+  font-weight: 600;
 }
 
+
+/* Back Button */
+
+.track-back-btn {
+  width: 34px;
+  height: 34px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: #e8f8fc;
+  color: #159bc5;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+.track-back-btn svg {
+  font-size: 19px;
+}
+
+
+/* =================================
+   Order Information
+================================= */
+
 .order-info {
-    padding: 17px 4px 12px;
+  width: 100%;
+
+  padding: 16px;
+
+  background: #ffffff;
+
+  border: 1px solid #dfedf1;
+  border-radius: 12px;
+
+  box-shadow: 0 3px 10px rgba(31, 94, 111, 0.04);
 }
 
 .order-info h3 {
-    margin: 0 0 6px;
-    font-size: 17px;
-    color: #123f70;
+  margin: 0 0 6px;
+
+  color: #164b63;
+
+  font-size: 15px;
+  font-weight: 600;
 }
 
 .order-info p {
-    margin: 0;
-    font-size: 15px;
-    color: #6b8698;
+  margin: 0;
+
+  color: #7a8e96;
+
+  font-size: 11px;
 }
 
+
+/* =================================
+   Supplier Info
+================================= */
+
+.track-supplier {
+  margin-top: 12px;
+
+  padding: 14px 16px;
+
+  background: #eaf9fc;
+
+  border: 1px solid #d6eef3;
+  border-radius: 11px;
+}
+
+.track-supplier h3 {
+  margin: 0 0 5px;
+
+  color: #164b63;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.track-supplier p {
+  margin: 0;
+
+  color: #64818c;
+
+  font-size: 11px;
+}
+
+
+/* =================================
+   Timeline
+================================= */
 
 .timeline {
-    margin-top: 4px;
+  margin-top: 22px;
+
+  padding: 5px 5px 5px 3px;
 }
+
+
+/* =================================
+   Timeline Item
+================================= */
 
 .timeline-item {
-    display: flex;
-    align-items: center;
-    min-height: 55px;
-    gap: 25px;
+  min-height: 62px;
+
+  display: flex;
+  align-items: flex-start;
+
+  position: relative;
 }
 
-.timeline-line {
-    width: 2px;
-    height: 18px;
-    background: #1aa897;
-    margin-left: 12px;
-}
+
+/* =================================
+   Timeline Circle
+================================= */
 
 .timeline-circle {
-    width: 35px;
-    height: 35px;
-    min-width: 24px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2;
-}
+  width: 36px;
+  height: 36px;
 
-.timeline-circle svg {
-    font-size: 14px;
-}
+  flex-shrink: 0;
 
+  border-radius: 50%;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-.completed .timeline-circle {
-    background: #16a795;
-    color: white;
-}
-
-.completed .timeline-content h4 {
-    color: #123f70;
+  position: relative;
+  z-index: 2;
 }
 
 
+/* Completed */
 
-.active .timeline-circle {
-    width: 35px !important;
-    height: 35px !important;
-    min-width: 24px;
-    margin-left: -1.5px;
-    background: white;
-    padding: 2px;
-    color: #0788d1;
-    border: 5px solid #9bddf7;
+.timeline-item.completed .timeline-circle {
+  background: #dff7ed;
+  color: #15946a;
+
+  border: 1px solid #bfe9d8;
 }
 
-.active .timeline-item {
-    min-height: 80px;
-}
-
-.active .timeline-content h4 {
-    color: #123f70;
+.timeline-item.completed .timeline-circle svg {
+  font-size: 17px;
 }
 
 
+/* Active */
 
-.pending .timeline-circle {
-    background: white;
-    border: 2px solid #a8c3d0;
-    color: transparent;
+.timeline-item.active .timeline-circle {
+  background: #159bc5;
+  color: #ffffff;
+
+  border: 4px solid #d9f3f8;
+
+  box-shadow: 0 0 0 1px #159bc5;
 }
 
-.pending .timeline-content h4 {
-    color: #52718a;
+.timeline-item.active .timeline-circle svg {
+  font-size: 16px;
 }
+
+
+/* Pending */
+
+.timeline-item.pending .timeline-circle {
+  background: #ffffff;
+  color: #b7c7cc;
+
+  border: 2px solid #d5e3e7;
+}
+
+.timeline-item.pending .timeline-circle svg {
+  font-size: 12px;
+}
+
 
 .timeline-content {
-    padding-left: 17px;
-    height: 40px;
-    width: 50% !important;
-    border-radius: 50%;
-    padding: 2px;
+  padding: 1px 0 0 14px;
 }
 
 .timeline-content h4 {
-    margin: 0 0 5px;
-    font-size: 15px;
-    font-weight: 700;
-    color: #123f70;
+  margin: 0 0 5px;
+
+  color: #365864;
+
+  font-size: 14px;
+  font-weight: 600;
 }
 
 .timeline-content p {
-    margin: 0;
-    font-size: 15px;
-    color: #7890a0;
+  margin: 0;
+
+  color: #80939a;
+
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+
+/* Active text */
+
+.timeline-item.active .timeline-content h4 {
+  color: #159bc5;
+}
+
+
+/* Completed text */
+
+.timeline-item.completed .timeline-content h4 {
+  color: #244b59;
+}
+
+
+
+.timeline-line {
+  width: 2px;
+  height: 27px;
+
+  margin-left: 20px;
+
+  background: #cde8ee;
 }
 
 
 .delivery-card {
-    margin-top: 30px;
-    padding: 17px 17px 15px;
-    min-height: 145px;
-    border-radius: 15px;
-    border: 1px solid #d7eeee;
-    background-color: #f2f6f9;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
+  width: 100%;
+
+  margin-top: 18px;
+  padding: 18px;
+
+  background: #ffffff;
+
+  border: 1px solid #dfedf1;
+  border-radius: 13px;
+
+  text-align: center;
+
+  box-shadow: 0 3px 12px rgba(31, 94, 111, 0.04);
 }
+
+
+/* Truck */
 
 .delivery-route {
-    height: 35px;
-    position: relative;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+  width: 52px;
+  height: 52px;
 
+  margin: 0 auto 11px;
+
+  border-radius: 50%;
+
+  background: #eaf9fc;
+
+  color: #159bc5;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .delivery-truck {
-    font-size: 30px;
-    color: #168dc5;
-    margin-left: 5px;
+  font-size: 23px;
 }
 
+
+/* Delivery Heading */
+
 .delivery-card h3 {
-    position: relative;
-    z-index: 1;
-    margin: 4px 0 9px;
-    font-size: 18px;
-    color: #0788c9;
+  margin: 0 0 10px;
+
+  color: #164b63;
+
+  font-size: 16px;
+  font-weight: 600;
 }
 
 .delivery-card p {
-    position: relative;
-    z-index: 1;
-    margin: 5px 0;
-    font-size: 15px;
-    color: #456477;
-    text-align: left;
+  margin: 6px 0;
+
+  color: #71858d;
+
+  font-size: 11px;
 }
 
 .delivery-card strong {
-    color: #123f70;
+  color: #365864;
+}
+
+.track-empty {
+  width: 100%;
+  min-height: 100vh;
+
+  padding: 20px;
+
+  background: #f5fbfd;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+}
+
+.track-empty h2 {
+  margin: 0 0 8px;
+
+  color: #164b63;
+
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.track-empty p {
+  margin: 0;
+
+  color: #7b8f97;
+
+  font-size: 13px;
+}
+
+.track-empty button {
+  margin-top: 20px;
+
+  padding: 11px 25px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #159bc5;
+  color: #ffffff;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+
+
+@media (max-width: 480px) {
+
+  .track-page {
+    padding-left: 13px;
+    padding-right: 13px;
+    padding-bottom: 90px;
+  }
+
+  .track-header {
+    height: 62px;
+  }
+
+  .track-header h2 {
+    font-size: 19px;
+  }
+
+  .order-info {
+    padding: 15px;
+  }
+
+  .track-supplier {
+    padding: 13px 15px;
+  }
+
+  .timeline {
+    margin-top: 20px;
+  }
+
+  .timeline-content {
+    padding-left: 12px;
+  }
+
+  .timeline-content h4 {
+    font-size: 13px;
+  }
+
+  .timeline-content p {
+    font-size: 10px;
+  }
+
+  .delivery-card {
+    padding: 17px 14px;
+  }
+
 }

@@ -14,8 +14,8 @@
   height: 60px;
   display: flex;
   align-items: center;
-  gap: 15px;
-  padding: 0 18px;
+  justify-content: space-between;
+  padding: 0 22px;
   background: #ffffff;
   border-bottom: 1px solid #e5eef1;
   position: sticky;
@@ -35,10 +35,14 @@
   height: 38px;
   border: none;
   background: #eef9fc;
-  color: #176582;
+  /* color: #176582; */
+  color: black;
   border-radius: 8px;
   font-size: 22px;
   cursor: pointer;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
 }
 
 
@@ -214,7 +218,9 @@
   font-size: 15px;
   font-weight: 600;
   cursor: pointer;
+
 }
+
 
 .proceed-order-btn:hover {
   background: #118caf;
@@ -254,4 +260,298 @@
     margin-left: 12px;
     margin-right: 12px;
   }
+}
+
+/* ================================
+   Quantity Section
+================================ */
+
+.quantity-section {
+  width: 100%;
+  margin-top: 18px;
+  padding: 18px;
+  background: #ffffff;
+  border: 1px solid #e1eef2;
+  border-radius: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.quantity-info h3 {
+  margin: 0;
+  color: #244b59;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.quantity-info p {
+  margin: 5px 0 0;
+  color: #7b8d94;
+  font-size: 12px;
+}
+
+
+/* ================================
+   Quantity Buttons
+================================ */
+
+.quantity-control {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.quantity-control button {
+  width: 32px;
+  height: 32px;
+
+  border: 1px solid #d6e8ed;
+  border-radius: 7px;
+
+  background: #f5fbfd;
+  color: #159bc5;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+.quantity-control button svg {
+  font-size: 12px;
+}
+
+.quantity-control button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.quantity-control span {
+  min-width: 25px;
+  text-align: center;
+
+  color: #164b63;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+
+/* ================================
+   Total Price
+================================ */
+
+.total-price-box {
+  width: 100%;
+  margin-top: 14px;
+  padding: 17px 18px;
+
+  background: #edfafd;
+  border: 1px solid #d7eef3;
+  border-radius: 12px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.total-price-box > div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.total-price-box span {
+  color: #71858d;
+  font-size: 11px;
+}
+
+.total-price-box strong {
+  color: #244b59;
+  font-size: 15px;
+}
+
+.total-price-box .total-amount {
+  text-align: right;
+}
+
+.total-price-box .total-amount strong {
+  color: #159bc5;
+  font-size: 21px;
+}
+
+
+/* ================================
+   Order Form
+================================ */
+
+.order-form-section {
+  width: 100%;
+  margin-top: 22px;
+  padding: 20px;
+
+  background: #ffffff;
+  border: 1px solid #dfedf1;
+  border-radius: 14px;
+}
+
+.form-heading {
+  margin-bottom: 22px;
+}
+
+.form-heading h2 {
+  margin: 0;
+  color: #164b63;
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.form-heading p {
+  margin: 6px 0 0;
+  color: #7a8d94;
+  font-size: 12px;
+}
+
+
+/* ================================
+   Form Fields
+================================ */
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 7px;
+
+  color: #365864;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 13px;
+
+  border: 1px solid #d9e8ec;
+  border-radius: 8px;
+
+  background: #fbfeff;
+
+  color: #294d59;
+  font-family: inherit;
+  font-size: 13px;
+
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #159bc5;
+}
+
+.form-group textarea {
+  min-height: 85px;
+  resize: vertical;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #a3b3b8;
+}
+
+
+/* ================================
+   Order Summary
+================================ */
+
+.form-order-summary {
+  margin-top: 20px;
+  padding: 15px;
+
+  background: #f5fbfd;
+  border-radius: 10px;
+}
+
+.form-order-summary > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 8px 0;
+  border-bottom: 1px solid #e3eef1;
+}
+
+.form-order-summary > div:last-child {
+  border-bottom: none;
+}
+
+.form-order-summary span {
+  color: #71858d;
+  font-size: 12px;
+}
+
+.form-order-summary strong {
+  color: #244b59;
+  font-size: 13px;
+}
+
+
+/* ================================
+   Continue Payment Button
+================================ */
+
+.continue-payment-btn {
+  width: 100%;
+  margin-top: 18px;
+  padding: 13px;
+
+  border: none;
+  border-radius: 9px;
+
+  background: #159bc5;
+  color: #ffffff;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.continue-payment-btn:hover {
+  background: #118bad;
+}
+
+
+/* ================================
+   Mobile
+================================ */
+
+@media (max-width: 480px) {
+
+  .quantity-section {
+    padding: 16px;
+  }
+
+  .quantity-control {
+    gap: 10px;
+  }
+
+  .quantity-control button {
+    width: 30px;
+    height: 30px;
+  }
+
+  .total-price-box {
+    padding: 15px;
+  }
+
+  .order-form-section {
+    padding: 17px;
+  }
+
 }

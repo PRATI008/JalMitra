@@ -402,7 +402,7 @@ font-size:12px;
   font-size: 14px;
 }
 
-.type-of-water{
+/* .type-of-water{
     width: 100%;
     margin: 0 auto;
     height: 400px;
@@ -481,7 +481,7 @@ left: 10px;
     justify-content: center;
     align-items: center;
     border-radius: 50%;
-}
+} */
 
 
 
@@ -564,4 +564,697 @@ left: 10px;
   margin: 0;
   color: #819198;
   font-size: 11px;
+}
+
+
+/* ================= LOCATION ================= */
+
+.location-section {
+  width: 90%;
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  background: #ffffff;
+  border: 1px solid #e1edf0;
+  border-radius: 14px;
+
+  box-shadow: 0 5px 20px rgba(40, 120, 145, 0.08);
+}
+
+.location-box {
+  width: 48px;
+  height: 48px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #e9f9fc;
+  color: #159bc5;
+
+  border-radius: 10px;
+  font-size: 20px;
+}
+
+.location-info {
+  flex: 1;
+}
+
+.location-info h2 {
+  margin: 0 0 4px;
+
+  color: #164b63;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.location-info p {
+  margin: 0;
+
+  color: #71858d;
+  font-size: 12px;
+}
+
+.location-input-box {
+  width: 280px;
+  height: 44px;
+
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  padding: 0 12px;
+
+  border: 1px solid #d9e9ed;
+  border-radius: 8px;
+
+  background: #f9fdfe;
+
+  color: #159bc5;
+}
+
+.location-input-box input {
+  width: 100%;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  color: #405d67;
+  font-size: 13px;
+}
+
+.location-input-box input::placeholder {
+  color: #91a4aa;
+}
+
+
+/* ================= COMMON SECTION HEADING ================= */
+
+.section-heading {
+  max-width: 650px;
+  margin: 0 auto 30px;
+
+  text-align: center;
+}
+
+.section-heading p {
+  margin: 0 0 7px;
+
+  color: #159bc5;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  letter-spacing: 1px;
+}
+
+.section-heading h2 {
+  margin: 0;
+
+  color: #164b63;
+
+  font-size: 27px;
+  font-weight: 600;
+}
+
+.section-heading span {
+  display: block;
+
+  margin-top: 9px;
+
+  color: #71858d;
+
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+
+/* ================= WHY JALMITRA ================= */
+
+.why-section {
+  padding: 55px 20px;
+
+  background: #ffffff;
+}
+
+.why-cards {
+  max-width: 1000px;
+  margin: auto;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.why-card {
+  padding: 23px 20px;
+
+  background: #f8fcfd;
+
+  border: 1px solid #e2eef1;
+  border-radius: 12px;
+
+  text-align: left;
+}
+
+.why-icon {
+  width: 43px;
+  height: 43px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #e9f9fc;
+  color: #159bc5;
+
+  border-radius: 9px;
+
+  font-size: 18px;
+}
+
+.why-card h3 {
+  margin: 17px 0 7px;
+
+  color: #244b59;
+
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.why-card p {
+  margin: 0;
+
+  color: #71858d;
+
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+
+/* ================= WATER TYPE ================= */
+
+.type-of-water {
+  padding: 60px 20px;
+
+  background: #f5fbfd;
+}
+
+.type-of-order-cards {
+  max-width: 850px;
+  margin: auto;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.water-card {
+  padding: 25px;
+
+  background: #ffffff;
+
+  border: 1px solid #dcebef;
+  border-radius: 14px;
+
+  position: relative;
+}
+
+.water-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.water-icon {
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #edfaff;
+
+  border-radius: 11px;
+
+  font-size: 27px;
+}
+
+.water-arrow {
+  color: #159bc5;
+
+  font-size: 17px;
+}
+
+.water-card h3 {
+  margin: 20px 0 5px;
+
+  color: #164b63;
+
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.water-card > p {
+  margin: 0;
+
+  color: #6e828a;
+
+  font-size: 13px;
+}
+
+.water-details {
+  margin-top: 17px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.water-details span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  color: #607983;
+
+  font-size: 12px;
+}
+
+.water-details svg {
+  color: #159bc5;
+}
+
+.water-select-btn {
+  width: 100%;
+
+  margin-top: 22px;
+
+  padding: 11px 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #159bc5;
+  color: #ffffff;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  cursor: pointer;
+}
+
+.water-select-btn:hover {
+  background: #118caf;
+}
+
+.cold-water {
+  border-top: 3px solid #58b9dc;
+}
+
+.normal-water {
+  border-top: 3px solid #159bc5;
+}
+
+
+/* ================= HOW IT WORKS ================= */
+
+.how-section {
+  padding: 60px 20px;
+
+  background: #ffffff;
+}
+
+.steps-container {
+  max-width: 900px;
+  margin: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.step-card {
+  width: 250px;
+
+  text-align: center;
+}
+
+.step-number {
+  width: 48px;
+  height: 48px;
+
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #eaf9fc;
+  color: #159bc5;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.step-card h3 {
+  margin: 15px 0 7px;
+
+  color: #244b59;
+
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.step-card p {
+  margin: 0;
+
+  color: #71858d;
+
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.step-line {
+  width: 55px;
+  height: 1px;
+
+  background: #d6e8ec;
+}
+
+
+/* ================= QUOTE ================= */
+
+.quote-section {
+  width: 100%;
+
+  padding: 65px 20px;
+
+  background: #edfafd;
+
+  text-align: center;
+}
+
+.quote-content {
+  max-width: 700px;
+  margin: auto;
+}
+
+.quote-icon {
+  margin-bottom: 15px;
+
+  color: #159bc5;
+
+  font-size: 55px;
+  line-height: 35px;
+
+  font-family: Georgia, serif;
+}
+
+.quote-content h2 {
+  margin: 0;
+
+  color: #164b63;
+
+  font-size: 30px;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+.quote-content h2 span {
+  color: #159bc5;
+}
+
+.quote-content p {
+  margin: 15px 0 0;
+
+  color: #617982;
+
+  font-size: 14px;
+}
+
+
+/* ================= FOOTER ================= */
+/* 
+.footer {
+  width: 100%;
+
+  background: #ffffff;
+
+  border-top: 1px solid #e1edf0;
+}
+
+.footer-main {
+  max-width: 1100px;
+
+  margin: auto;
+
+  padding: 50px 25px 40px;
+
+  display: grid;
+
+  grid-template-columns: 1.5fr 1fr 1fr;
+
+  gap: 50px;
+}
+
+.footer-brand h2 {
+  margin: 0;
+
+  color: #164b63;
+
+  font-size: 25px;
+  font-weight: 700;
+}
+
+.footer-brand h2 span {
+  color: #159bc5;
+}
+
+.footer-brand > p {
+  margin: 5px 0 0;
+
+  color: #607984;
+
+  font-size: 13px;
+}
+
+.footer-about {
+  max-width: 300px;
+
+  margin-top: 15px !important;
+
+  color: #71858d !important;
+
+  line-height: 1.7;
+}
+
+.footer-links,
+.footer-service {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer-links h3,
+.footer-service h3 {
+  margin: 0 0 15px;
+
+  color: #214d5e;
+
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.footer-links a {
+  margin-bottom: 10px;
+
+  color: #667d86;
+
+  font-size: 13px;
+
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: #159bc5;
+}
+
+.footer-service p {
+  margin: 0 0 10px;
+
+  color: #667d86;
+
+  font-size: 13px;
+}
+
+.footer-bottom-rights {
+  padding: 17px 25px;
+
+  border-top: 1px solid #e5eef1;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.footer-bottom-rights p {
+  margin: 0;
+
+  color: #819198;
+
+  font-size: 11px;
+}
+ */
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 600px) {
+
+  .location-section {
+    width: calc(100% - 30px);
+
+    margin: 20px auto;
+
+    padding: 15px;
+
+    display: block;
+  }
+
+  .location-box {
+    width: 42px;
+    height: 42px;
+
+    margin-bottom: 12px;
+  }
+
+  .location-info h2 {
+    font-size: 17px;
+  }
+
+  .location-input-box {
+    width: auto;
+
+    margin-top: 15px;
+  }
+
+
+  .why-section,
+  .type-of-water,
+  .how-section {
+    padding: 45px 15px;
+  }
+
+
+  .section-heading {
+    margin-bottom: 25px;
+  }
+
+  .section-heading h2 {
+    font-size: 23px;
+  }
+
+  .section-heading span {
+    font-size: 12px;
+  }
+
+
+  .why-cards {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .why-card {
+    padding: 19px;
+  }
+
+
+  .type-of-order-cards {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .water-card {
+    padding: 20px;
+  }
+
+
+  .steps-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .step-card {
+    width: 100%;
+  }
+
+  .step-line {
+    width: 1px;
+    height: 30px;
+  }
+
+
+  .quote-section {
+    padding: 50px 18px;
+  }
+
+  .quote-icon {
+    font-size: 48px;
+  }
+
+  .quote-content h2 {
+    font-size: 23px;
+  }
+
+  .quote-content p {
+    font-size: 13px;
+  }
+
+
+  .footer-main {
+    padding: 40px 20px 30px;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 30px 20px;
+  }
+
+  .footer-brand {
+    grid-column: 1 / -1;
+  }
+
+  .footer-brand h2 {
+    font-size: 23px;
+  }
+
+  .footer-about {
+    max-width: 100%;
+  }
+
+  .footer-bottom-rights {
+    padding: 15px 20px;
+
+    flex-direction: column;
+
+    text-align: center;
+  }
+
 }
