@@ -9,8 +9,6 @@ import { FaStar } from "react-icons/fa";
 import { FaMotorcycle } from "react-icons/fa6";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { FaSearch } from "react-icons/fa";
-import { FaShieldAlt } from "react-icons/fa";
-import { FaClock } from "react-icons/fa";
 import { FaWater } from "react-icons/fa";
 import { FaCheckCircle } from "react-icons/fa";
 
@@ -125,10 +123,6 @@ const Home = () => {
         </div>
 
       </section>
-
-
-
-      {/* ================= LOCATION SECTION ================= */}
 
       <section className="location-section">
 
@@ -282,20 +276,11 @@ const Home = () => {
 
         <div className="type-of-order-cards">
 
-
-          {/* Cold Water */}
+{/* cold water */}
 
           <div className="water-card cold-water">
 
             <div className="water-card-top">
-
-              <div className="water-icon">
-                ❄️
-              </div>
-
-              <span className="water-arrow">
-                <FaArrowRightLong />
-              </span>
 
             </div>
 
@@ -325,14 +310,10 @@ const Home = () => {
             </div>
 
 
-            <NavLink to="/search-bar">
-
-              <button className="water-select-btn">
-                Find Cold Water
+            <NavLink to="/search-bar" className="water-select-btn">
+               Find Cold Water
                 <FaArrowRightLong />
-              </button>
-
-            </NavLink>
+             </NavLink>
 
           </div>
 
@@ -344,25 +325,10 @@ const Home = () => {
 
             <div className="water-card-top">
 
-              <div className="water-icon">
-                💧
-              </div>
-
-              <span className="water-arrow">
-                <FaArrowRightLong />
-              </span>
-
-            </div>
-
-
-            <h3>
-              Normal Water
-            </h3>
-
-
-            <p>
-              Fresh & Clean
-            </p>
+              
+             </div>
+            <h3> Normal Water</h3>
+            <p>Fresh & Clean</p>
 
 
             <div className="water-details">
@@ -380,12 +346,10 @@ const Home = () => {
             </div>
 
 
-            <NavLink to="/search-bar">
+            <NavLink to="/search-bar" className="water-select-btn">
 
-              <button className="water-select-btn">
-                Find Normal Water
+             Find Normal Water
                 <FaArrowRightLong />
-              </button>
 
             </NavLink>
 
@@ -394,10 +358,7 @@ const Home = () => {
         </div>
 
       </section>
-
-
-
-      {/* ================= HOW IT WORKS ================= */}
+      {/* how it work */}
 
       <section className="how-section">
 

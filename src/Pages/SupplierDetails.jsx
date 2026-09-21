@@ -298,8 +298,7 @@ const SupplierDetails = () => {
       </div>
 
 
-      {/* ================= PROCEED BUTTON ================= */}
-
+     
       {!showOrderForm && (
 
         <button
@@ -312,8 +311,7 @@ const SupplierDetails = () => {
       )}
 
 
-      {/* ================= ORDER FORM ================= */}
-
+     
       {showOrderForm && (
 
         <div className="order-form-section">

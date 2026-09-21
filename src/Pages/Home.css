@@ -106,8 +106,6 @@
 
 }
 
-/* ================= BUTTONS ================= */
-
 .hero-btns{
 
     display:flex;
@@ -181,8 +179,6 @@
 
 }
 
-/* ================= FEATURES ================= */
-
 .hero-features{
 
     margin-top:45px;
@@ -227,8 +223,6 @@
 
 }
 
-/* ================= ANIMATION ================= */
-
 @keyframes heroFade{
 
     0%{
@@ -248,9 +242,7 @@
     }
 
 }
-
-/* ================= MOBILE ================= */
-
+/* mobile */
 @media(max-width:768px){
 
 .hero{
@@ -315,9 +307,7 @@ padding:10px 15px;
 }
 
 }
-
-/* ================= SMALL MOBILE ================= */
-
+/* small mobile */
 @media(max-width:480px){
 
 .hero-content h1{
@@ -402,91 +392,6 @@ font-size:12px;
   font-size: 14px;
 }
 
-/* .type-of-water{
-    width: 100%;
-    margin: 0 auto;
-    height: 400px;
-    padding: 20px;
-}
-.type-of-water h2{
-font-size: 20px;
-}
-
-.type-of-order-cards{
-    display: flex;
-    width: 100%;
-    height: 300px;
-    margin: 13px auto;
-    gap: 10px;
-}
-
-.cold-water{
-    width: 180px;
-    height: 160px;
-    background: url(./cold.jfif);
-    background-size: 100% 100%;
-    border-radius: 8px;
-    position: relative;
-}
-.cold-water h4{
-position: absolute;
-bottom: 60px;
-left: 10px;
-}
-.cold-water p{
-position: absolute;
-bottom: 40px;
-left: 10px;
-}
-.cold-water span{
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    height: 30px;
-    width: 30px;
-    background-color: blue;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-}
-.normal-water{
-    width: 180px;
-    height: 160px;
-    background: url(./normal.jfif);
-    background-size: 100% 100%;
-    border-radius: 8px;
-    position: relative;
-}
-.normal-water h4{
-position: absolute;
-bottom: 60px;
-left: 10px;
-}
-.normal-water p{
-position: absolute;
-bottom: 40px;
-left: 10px;
-}
-.normal-water span{
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    height: 30px;
-    width: 30px;
-    background-color: blue;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-} */
-
-
-
-/* Quote Section */
-
 .quote-section {
   width: 100%;
   padding: 65px 20px;
@@ -567,8 +472,6 @@ left: 10px;
 }
 
 
-/* ================= LOCATION ================= */
-
 .location-section {
   width: 90%;
   max-width: 900px;
@@ -579,11 +482,11 @@ left: 10px;
   align-items: center;
   gap: 15px;
 
-  background: #ffffff;
-  border: 1px solid #e1edf0;
+  background:white;
+  border: 1px solid #dde9ec;
   border-radius: 14px;
 
-  box-shadow: 0 5px 20px rgba(40, 120, 145, 0.08);
+  box-shadow: 0 5px 20px rgba(0, 14, 18, 0.08);
 }
 
 .location-box {
@@ -611,7 +514,7 @@ left: 10px;
   margin: 0 0 4px;
 
   color: #164b63;
-  font-size: 18px;
+  font-size: 19px;
   font-weight: 600;
 }
 
@@ -619,7 +522,7 @@ left: 10px;
   margin: 0;
 
   color: #71858d;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .location-input-box {
@@ -637,7 +540,7 @@ left: 10px;
 
   background: #f9fdfe;
 
-  color: #159bc5;
+  color: #041c24;
 }
 
 .location-input-box input {
@@ -648,16 +551,14 @@ left: 10px;
 
   background: transparent;
 
-  color: #405d67;
-  font-size: 13px;
+  color: black;
+  font-size: 16px;
 }
 
 .location-input-box input::placeholder {
-  color: #91a4aa;
+  color: #6e797c;
 }
 
-
-/* ================= COMMON SECTION HEADING ================= */
 
 .section-heading {
   max-width: 650px;
@@ -669,9 +570,9 @@ left: 10px;
 .section-heading p {
   margin: 0 0 7px;
 
-  color: #159bc5;
+  color: #0b85ab;
 
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
 
   letter-spacing: 1px;
@@ -680,9 +581,9 @@ left: 10px;
 .section-heading h2 {
   margin: 0;
 
-  color: #164b63;
+  color: #16526d;
 
-  font-size: 27px;
+  font-size: 28px;
   font-weight: 600;
 }
 
@@ -691,18 +592,14 @@ left: 10px;
 
   margin-top: 9px;
 
-  color: #71858d;
+  color: #536065;
 
-  font-size: 13px;
+  font-size: 18px;
   line-height: 1.6;
 }
 
-
-/* ================= WHY JALMITRA ================= */
-
 .why-section {
   padding: 55px 20px;
-
   background: #ffffff;
 }
 
@@ -718,9 +615,10 @@ left: 10px;
 .why-card {
   padding: 23px 20px;
 
-  background: #f8fcfd;
+  background: white;
+  box-shadow: 2px 0px 5px rgb(207, 217, 217);
 
-  border: 1px solid #e2eef1;
+  border: 1px solid #cbcfcf;
   border-radius: 12px;
 
   text-align: left;
@@ -734,12 +632,12 @@ left: 10px;
   align-items: center;
   justify-content: center;
 
-  background: #e9f9fc;
+  background: #d7f1f6;
   color: #159bc5;
 
   border-radius: 9px;
 
-  font-size: 18px;
+  font-size: 19px;
 }
 
 .why-card h3 {
@@ -747,7 +645,7 @@ left: 10px;
 
   color: #244b59;
 
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
 }
 
@@ -756,23 +654,18 @@ left: 10px;
 
   color: #71858d;
 
-  font-size: 13px;
-  line-height: 1.6;
+  font-size: 14px;
+  line-height: 1.5;
 }
-
-
-/* ================= WATER TYPE ================= */
 
 .type-of-water {
   padding: 60px 20px;
-
-  background: #f5fbfd;
+   background: #f5fbfd;
 }
 
 .type-of-order-cards {
-  max-width: 850px;
+  max-width: 340px;
   margin: auto;
-
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 18px;
@@ -782,7 +675,7 @@ left: 10px;
   padding: 25px;
 
   background: #ffffff;
-
+box-shadow: 0px 0px 8px rgb(105, 127, 127);
   border: 1px solid #dcebef;
   border-radius: 14px;
 
@@ -830,7 +723,7 @@ left: 10px;
 
   color: #6e828a;
 
-  font-size: 13px;
+  font-size: 15px;
 }
 
 .water-details {
@@ -872,9 +765,11 @@ left: 10px;
 
   background: #159bc5;
   color: #ffffff;
+  text-decoration: none;
 
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 15px;
+
+  font-weight: 600;
 
   cursor: pointer;
 }
@@ -891,8 +786,6 @@ left: 10px;
   border-top: 3px solid #159bc5;
 }
 
-
-/* ================= HOW IT WORKS ================= */
 
 .how-section {
   padding: 60px 20px;
@@ -916,8 +809,8 @@ left: 10px;
 }
 
 .step-number {
-  width: 48px;
-  height: 48px;
+  width: 60px;
+  height: 60px;
 
   margin: 0 auto;
 
@@ -927,10 +820,10 @@ left: 10px;
 
   border-radius: 50%;
 
-  background: #eaf9fc;
-  color: #159bc5;
+  background: #93ddec;
+  color:white;
 
-  font-size: 13px;
+  font-size: 18px;
   font-weight: 600;
 }
 
@@ -939,7 +832,7 @@ left: 10px;
 
   color: #244b59;
 
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
 }
 
@@ -948,7 +841,7 @@ left: 10px;
 
   color: #71858d;
 
-  font-size: 12px;
+  font-size: 15px;
   line-height: 1.6;
 }
 
@@ -959,8 +852,6 @@ left: 10px;
   background: #d6e8ec;
 }
 
-
-/* ================= QUOTE ================= */
 
 .quote-section {
   width: 100%;
@@ -1009,123 +900,6 @@ left: 10px;
 
   font-size: 14px;
 }
-
-
-/* ================= FOOTER ================= */
-/* 
-.footer {
-  width: 100%;
-
-  background: #ffffff;
-
-  border-top: 1px solid #e1edf0;
-}
-
-.footer-main {
-  max-width: 1100px;
-
-  margin: auto;
-
-  padding: 50px 25px 40px;
-
-  display: grid;
-
-  grid-template-columns: 1.5fr 1fr 1fr;
-
-  gap: 50px;
-}
-
-.footer-brand h2 {
-  margin: 0;
-
-  color: #164b63;
-
-  font-size: 25px;
-  font-weight: 700;
-}
-
-.footer-brand h2 span {
-  color: #159bc5;
-}
-
-.footer-brand > p {
-  margin: 5px 0 0;
-
-  color: #607984;
-
-  font-size: 13px;
-}
-
-.footer-about {
-  max-width: 300px;
-
-  margin-top: 15px !important;
-
-  color: #71858d !important;
-
-  line-height: 1.7;
-}
-
-.footer-links,
-.footer-service {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.footer-links h3,
-.footer-service h3 {
-  margin: 0 0 15px;
-
-  color: #214d5e;
-
-  font-size: 15px;
-  font-weight: 600;
-}
-
-.footer-links a {
-  margin-bottom: 10px;
-
-  color: #667d86;
-
-  font-size: 13px;
-
-  text-decoration: none;
-}
-
-.footer-links a:hover {
-  color: #159bc5;
-}
-
-.footer-service p {
-  margin: 0 0 10px;
-
-  color: #667d86;
-
-  font-size: 13px;
-}
-
-.footer-bottom-rights {
-  padding: 17px 25px;
-
-  border-top: 1px solid #e5eef1;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 15px;
-}
-
-.footer-bottom-rights p {
-  margin: 0;
-
-  color: #819198;
-
-  font-size: 11px;
-}
- */
-
-/* ================= MOBILE ================= */
 
 @media (max-width: 600px) {
 
