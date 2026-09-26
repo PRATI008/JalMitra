@@ -93,13 +93,6 @@ const Payment = () => {
 
       </div>
     <div className="payment-page">
-
-      
-
-
-
-    
-
       <div className="payment-section">
 
         <h3>Order Summary</h3>
