@@ -284,3 +284,102 @@
 
   cursor: pointer;
 }
+
+/* delivery type */
+.order-delivery-type{
+    margin-top: 15px;
+  padding: 12px;
+  background: #f7fcfd;
+  border: 1px solid #e0f0f3;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.order-delivery-type span {
+  font-size: 13px;
+  color: #71838a;
+}
+
+.order-delivery-type strong {
+  font-size: 13px;
+}
+
+/* Pre Book Badge */
+
+.prebook-badge {
+  color: #159bc5;
+  background: #e9f9fc;
+  padding: 7px 10px;
+  border-radius: 8px;
+}
+
+
+/* Deliver Now Badge */
+
+.now-badge {
+  color: #168a61;
+  background: #eafaf3;
+  padding: 7px 10px;
+  border-radius: 8px;
+}
+
+
+/* Pre Booking Details */
+
+.prebook-details {
+  margin-top: 10px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  gap: 10px;
+}
+
+
+.prebook-details > div {
+  background: #f4fbfd;
+
+  border: 1px solid #dceff3;
+
+  border-radius: 10px;
+
+  padding: 12px;
+}
+
+
+.prebook-details span {
+  display: block;
+
+  font-size: 11px;
+
+  color: #7b8e94;
+
+  margin-bottom: 5px;
+}
+
+
+.prebook-details strong {
+  display: block;
+
+  font-size: 13px;
+
+  color: #064b75;
+}
+
+
+/* Mobile */
+
+@media (max-width: 500px) {
+
+  .order-delivery-type {
+    align-items: flex-start;
+    gap: 10px;
+    flex-direction: column;
+  }
+
+  .prebook-details {
+    grid-template-columns: 1fr;
+  }
+
+}

@@ -11,7 +11,7 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  gap: 120px;
+  gap: 100px;
   padding: 0 18px;
   background: #ffffff;
   border-bottom: 1px solid #e5eef1;
@@ -25,7 +25,7 @@
   margin: 0;
   font-size: 19px;
   font-weight: 600;
-  color: blac    
+  color: black;    
 }
 
 

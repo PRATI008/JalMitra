@@ -16,27 +16,19 @@ import "./CSS/TrackOrder.css";
 
 import Footer from "../Components/Footer";
 
-
 const TrackOrder = () => {
-
   const navigate = useNavigate();
   const location = useLocation();
 
-
-  // Pehle navigation state check
   const savedOrder = localStorage.getItem("jalmitraOrder");
 
   const order = location.state
     || (savedOrder ? JSON.parse(savedOrder) : null);
 
-
-  // Agar order nahi hai
   if (!order) {
-
     return (
       <>
         <div className="track-empty">
-
           <h2>No Active Order</h2>
 
           <p>
@@ -48,7 +40,6 @@ const TrackOrder = () => {
           >
             Find Water
           </button>
-
         </div>
 
         <Footer />
@@ -56,15 +47,47 @@ const TrackOrder = () => {
     );
   }
 
+  const status = order.status || "Placed";
+
+  const statusList = [
+    "Placed",
+    "Accepted",
+    "Preparing",
+    "Out for Delivery",
+    "Delivered"
+  ];
+
+  const currentStatusIndex = statusList.indexOf(status);
+
+  const getStatusClass = (index) => {
+    if (index < currentStatusIndex) {
+      return "completed";
+    }
+
+    if (index === currentStatusIndex) {
+      return "active";
+    }
+
+    return "pending";
+  };
+
+  const getStatusIcon = (index) => {
+    if (index < currentStatusIndex) {
+      return <FiCheck />;
+    }
+
+    if (index === currentStatusIndex) {
+      return <FiTruck />;
+    }
+
+    return <FiCircle />;
+  };
 
   return (
     <>
       <div className="track-page">
 
         <div className="track-container">
-
-
-          {/* Header */}
 
           <div className="track-header">
 
@@ -78,9 +101,6 @@ const TrackOrder = () => {
             <h2>Track Order</h2>
 
           </div>
-
-
-          {/* Order Info */}
 
           <div className="order-info">
 
@@ -96,9 +116,6 @@ const TrackOrder = () => {
 
           </div>
 
-
-          {/* Supplier */}
-
           <div className="track-supplier">
 
             <h3>
@@ -112,18 +129,12 @@ const TrackOrder = () => {
 
           </div>
 
-
-          {/* Timeline */}
-
           <div className="timeline">
 
-
-            {/* Order Placed */}
-
-            <div className="timeline-item completed">
+            <div className={`timeline-item ${getStatusClass(0)}`}>
 
               <div className="timeline-circle">
-                <FiCheck />
+                {getStatusIcon(0)}
               </div>
 
               <div className="timeline-content">
@@ -138,16 +149,12 @@ const TrackOrder = () => {
 
             </div>
 
-
             <div className="timeline-line"></div>
 
-
-            {/* Accepted */}
-
-            <div className="timeline-item completed">
+            <div className={`timeline-item ${getStatusClass(1)}`}>
 
               <div className="timeline-circle">
-                <FiCheck />
+                {getStatusIcon(1)}
               </div>
 
               <div className="timeline-content">
@@ -162,16 +169,12 @@ const TrackOrder = () => {
 
             </div>
 
-
             <div className="timeline-line"></div>
 
-
-            {/* Preparing */}
-
-            <div className="timeline-item active">
+            <div className={`timeline-item ${getStatusClass(2)}`}>
 
               <div className="timeline-circle">
-                <FiTruck />
+                {getStatusIcon(2)}
               </div>
 
               <div className="timeline-content">
@@ -186,16 +189,12 @@ const TrackOrder = () => {
 
             </div>
 
-
             <div className="timeline-line"></div>
 
-
-            {/* Delivery */}
-
-            <div className="timeline-item pending">
+            <div className={`timeline-item ${getStatusClass(3)}`}>
 
               <div className="timeline-circle">
-                <FiCircle />
+                {getStatusIcon(3)}
               </div>
 
               <div className="timeline-content">
@@ -210,16 +209,12 @@ const TrackOrder = () => {
 
             </div>
 
-
             <div className="timeline-line"></div>
 
-
-            {/* Delivered */}
-
-            <div className="timeline-item pending">
+            <div className={`timeline-item ${getStatusClass(4)}`}>
 
               <div className="timeline-circle">
-                <FiCircle />
+                {getStatusIcon(4)}
               </div>
 
               <div className="timeline-content">
@@ -227,7 +222,7 @@ const TrackOrder = () => {
                 <h4>Delivered</h4>
 
                 <p>
-                  Waiting for delivery.
+                  Your order has been delivered.
                 </p>
 
               </div>
@@ -236,19 +231,16 @@ const TrackOrder = () => {
 
           </div>
 
-
-          {/* Delivery Card */}
-
           <div className="delivery-card">
 
             <div className="delivery-route">
-
               <FiTruck className="delivery-truck" />
-
             </div>
 
             <h3>
-              Your order is being processed!
+              {status === "Delivered"
+                ? "Your order has been delivered!"
+                : "Your order is being processed!"}
             </h3>
 
             <p>
@@ -261,6 +253,13 @@ const TrackOrder = () => {
               {order.supplier.location}
             </p>
 
+            <p>
+              <strong>Delivery Location:</strong>{" "}
+              {order.userDetails?.currentLocation ||
+                order.userDetails?.location ||
+                order.userDetails?.address}
+            </p>
+
           </div>
 
         </div>
@@ -268,10 +267,8 @@ const TrackOrder = () => {
       </div>
 
       <Footer />
-
     </>
   );
 };
-
 
 export default TrackOrder;
