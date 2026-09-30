@@ -12,6 +12,7 @@ import Orders from './Pages/Orders'
 import CustomerDetails from './Pages/CustomerDetails'
 import MyPayment from './Pages/MyPayment'
 import OrderComfirmation from './Pages/OrderComfirmation'
+import Login from './Pages/Login'
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
         <Route path='/supplier/:id' element={<SupplierDetails />} />
         <Route path='/customer' element={<CustomerDetails />} />
         <Route path='/order-comfirmation' element={<OrderComfirmation/>} />
+        <Route path='/login' element={<Login />} />
       </Routes>
     </Router>
   )

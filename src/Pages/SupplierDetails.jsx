@@ -42,16 +42,16 @@ const SupplierDetails = () => {
 
       setSavedUser(savedUserData);
 
+      setUserDetails({
+        name: savedUserData.name || "",
+        mobile: savedUserData.mobile || "",
+        address: savedUserData.address || "",
+        location: savedUserData.location || "",
+        currentLocation: savedUserData.currentLocation || ""
+      });
+
       if (login === "true") {
         setIsLoggedIn(true);
-
-        setUserDetails({
-          name: savedUserData.name || "",
-          mobile: savedUserData.mobile || "",
-          address: savedUserData.address || "",
-          location: savedUserData.location || "",
-          currentLocation: savedUserData.currentLocation || ""
-        });
       }
     }
   }, []);
@@ -129,6 +129,7 @@ const SupplierDetails = () => {
   // Form submit
   const handleOrderSubmit = (e) => {
     e.preventDefault();
+
     const customer = {
       name: userDetails.name,
       mobile: userDetails.mobile,
@@ -136,12 +137,15 @@ const SupplierDetails = () => {
       location: userDetails.location,
       currentLocation: userDetails.currentLocation
     };
+
+    const alreadyLoggedIn =
+      localStorage.getItem("jalmitraLogin") === "true";
+
     localStorage.setItem("jalmitraUser", JSON.stringify(customer));
 
-    localStorage.setItem("jalmitraLogin", "true");
-
     setSavedUser(customer);
-    setIsLoggedIn(true);
+    setUserDetails(customer);
+    setIsLoggedIn(alreadyLoggedIn);
 
     navigate("/payment", {
       state: {
@@ -149,7 +153,9 @@ const SupplierDetails = () => {
         waterType,
         quantity,
         totalPrice,
-        userDetails
+        userDetails: customer,
+        isFirstOrder: !savedUser,
+        wasLoggedIn: alreadyLoggedIn
       }
     });
   };
