@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import { FaStar } from "react-icons/fa";
@@ -11,13 +11,9 @@ import Swal from "sweetalert2";
 import "../Pages/CSS/SupplierDetails.css";
 
 const SupplierDetails = () => {
-
   const navigate = useNavigate();
   const { id } = useParams();
-
-//supplier data
-
-  const suppliers = [
+const suppliers = [
     {
       id: 1,
       name: "Mishra Water Supply",
@@ -25,9 +21,8 @@ const SupplierDetails = () => {
       distance: "1.3 km",
       water: "Both",
       price: 30,
-      rating: 4.5
+      rating: 4.5,
     },
-
     {
       id: 2,
       name: "Fresh Drop Water",
@@ -35,9 +30,8 @@ const SupplierDetails = () => {
       distance: "2.5 km",
       water: "Normal",
       price: 25,
-      rating: 4.8
+      rating: 4.8,
     },
-
     {
       id: 3,
       name: "Aqua Pure",
@@ -45,9 +39,8 @@ const SupplierDetails = () => {
       distance: "3.1 km",
       water: "Cold",
       price: 35,
-      rating: 4.7
+      rating: 4.7,
     },
-
     {
       id: 4,
       name: "Sky Water Services",
@@ -55,459 +48,406 @@ const SupplierDetails = () => {
       distance: "4.2 km",
       water: "Both",
       price: 30,
-      rating: 4.6
-    }
+      rating: 4.6,
+    },
   ];
 
   const supplier = suppliers.find(
     (item) => item.id === Number(id)
   );
 
- //states
+  // =========================================
+  // STATES
+  // =========================================
 
   const [waterType, setWaterType] = useState(
-    supplier?.water === "Normal"
-      ? "Normal"
-      : "Cold"
+    supplier?.water === "Normal" ? "Normal" : "Cold"
   );
 
   const [quantity, setQuantity] = useState(1);
 
-  const [showOrderForm, setShowOrderForm] =
-    useState(false);
-//delivery type
+  const [showOrderForm, setShowOrderForm] = useState(false);
 
-  const [deliveryType, setDeliveryType] =
-    useState("now");
+  // Delivery Type
+  const [deliveryType, setDeliveryType] = useState("now");
 
+  // Pre-booking
+  const [bookingDate, setBookingDate] = useState("");
+  const [bookingTime, setBookingTime] = useState("");
 
-  const [bookingDate, setBookingDate] =
-    useState("");
-
-  const [bookingTime, setBookingTime] =
-    useState("");
-
-
+  // Customer Details
   const [userDetails, setUserDetails] = useState({
     name: "",
     mobile: "",
     address: "",
     location: "",
-    currentLocation: ""
+    currentLocation: "",
   });
 
-  const [savedUser, setSavedUser] =
-    useState(null);
+  const [savedUser, setSavedUser] = useState(null);
 
+  // =========================================
+  // LOAD SAVED USER
+  // =========================================
 
   useEffect(() => {
+    const savedUserData = localStorage.getItem("jalmitraUser");
 
-    const user =
-      localStorage.getItem("jalmitraUser");
-
-    if (user) {
-
-      try {
-
-        const savedUserData =
-          JSON.parse(user);
-
-        // Mobile ko sirf numbers me convert karna
-        const mobile =
-          String(savedUserData.mobile || "")
-            .replace(/\D/g, "")
-            .slice(-10);
-
-        const userData = {
-
-          name:
-            savedUserData.name || "",
-
-          mobile:
-            mobile,
-
-          address:
-            savedUserData.address || "",
-
-          location:
-            savedUserData.location || "",
-
-          currentLocation:
-            savedUserData.currentLocation || ""
-
-        };
-
-        setSavedUser(userData);
-
-        setUserDetails(userData);
-
-      } catch (error) {
-
-        localStorage.removeItem(
-          "jalmitraUser"
-        );
-
-      }
-
+    if (!savedUserData) {
+      return;
     }
 
+    try {
+      const user = JSON.parse(savedUserData);
+
+      const mobile = String(user.mobile || "")
+        .replace(/\D/g, "")
+        .slice(-10);
+
+      const userData = {
+        name: user.name || "",
+        mobile: mobile,
+        address: user.address || "",
+        location: user.location || "",
+        currentLocation: user.currentLocation || "",
+      };
+
+      setSavedUser(userData);
+      setUserDetails(userData);
+    } catch (error) {
+      console.log("User data error:", error);
+      localStorage.removeItem("jalmitraUser");
+    }
   }, []);
 
-
+  // =========================================
+  // SUPPLIER NOT FOUND
+  // =========================================
 
   if (!supplier) {
-
     return (
-
       <div className="supplier-not-found">
-
-        <h2>
-          Supplier Not Found
-        </h2>
+        <h2>Supplier Not Found</h2>
 
         <button
-          onClick={() =>
-            navigate("/search-bar")
-          }
+          onClick={() => navigate("/search-bar")}
         >
           Back to Search
         </button>
-
       </div>
-
     );
-
   }
 
+  // =========================================
+  // QUANTITY
+  // =========================================
 
   const increaseQuantity = () => {
-
     setQuantity((prev) => prev + 1);
-
   };
 
   const decreaseQuantity = () => {
-
     if (quantity > 1) {
-
       setQuantity((prev) => prev - 1);
-
     }
-
   };
 
+  // =========================================
+  // TOTAL PRICE
+  // =========================================
 
-  const totalPrice =
-    supplier.price * quantity;
+  const totalPrice = supplier.price * quantity;
 
+  // =========================================
+  // FORM CHANGE
+  // =========================================
 
   const handleChange = (e) => {
-
     const { name, value } = e.target;
 
     setUserDetails((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }));
-
   };
 
+  // =========================================
+  // TODAY DATE
+  // =========================================
 
   const getToday = () => {
-
     const date = new Date();
 
-    const year =
-      date.getFullYear();
+    const year = date.getFullYear();
 
-    const month =
-      String(
-        date.getMonth() + 1
-      ).padStart(2, "0");
+    const month = String(
+      date.getMonth() + 1
+    ).padStart(2, "0");
 
-    const day =
-      String(
-        date.getDate()
-      ).padStart(2, "0");
+    const day = String(
+      date.getDate()
+    ).padStart(2, "0");
 
     return `${year}-${month}-${day}`;
-
   };
 
   const today = getToday();
 
+  // =========================================
+  // OPEN DELIVERY FORM
+  // =========================================
 
   const handleProceedOrder = () => {
-
     setShowOrderForm(true);
 
     window.scrollTo({
       top: 0,
-      behavior: "smooth"
+      behavior: "smooth",
     });
-
   };
 
-
+  // =========================================
+  // ORDER SUBMIT
+  // =========================================
 
   const handleOrderSubmit = (e) => {
-
     e.preventDefault();
 
+    // =======================================
+    // CLEAN MOBILE NUMBER
+    // =======================================
 
-    const mobileNumber =
-      String(userDetails.mobile || "")
-        .replace(/\D/g, "");
+    const mobileNumber = String(
+      userDetails.mobile || ""
+    )
+      .replace(/\D/g, "")
+      .slice(0, 10);
 
+    // =======================================
     // NAME VALIDATION
-   
+    // =======================================
 
     if (!userDetails.name.trim()) {
-
       Swal.fire({
         icon: "warning",
         title: "Name Required",
         text: "Please enter your name.",
-        confirmButtonColor: "#159bc5"
+        confirmButtonColor: "#159bc5",
       });
 
       return;
-
     }
 
- //mobile validation
+    // =======================================
+    // MOBILE VALIDATION
+    // =======================================
 
     if (!/^[6-9][0-9]{9}$/.test(mobileNumber)) {
-
       Swal.fire({
         icon: "warning",
         title: "Invalid Mobile Number",
         text: "Please enter a valid 10 digit mobile number.",
-        confirmButtonColor: "#159bc5"
+        confirmButtonColor: "#159bc5",
       });
 
       return;
-
     }
-//address validation
+
+    // =======================================
+    // ADDRESS VALIDATION
+    // =======================================
 
     if (!userDetails.address.trim()) {
-
       Swal.fire({
         icon: "warning",
         title: "Address Required",
         text: "Please enter your delivery address.",
-        confirmButtonColor: "#159bc5"
+        confirmButtonColor: "#159bc5",
       });
 
       return;
-
     }
 
-  //location validation
+    // =======================================
+    // LOCATION VALIDATION
+    // =======================================
 
     if (!userDetails.location.trim()) {
-
       Swal.fire({
         icon: "warning",
         title: "Location Required",
-        text: "Please enter your location.",
-        confirmButtonColor: "#159bc5"
+        text: "Please enter your area/location.",
+        confirmButtonColor: "#159bc5",
       });
 
       return;
-
     }
 
-  //prebook validation
+    // =======================================
+    // PRE-BOOK VALIDATION
+    // =======================================
 
     if (deliveryType === "prebook") {
-
-   
-
+      // Date required
       if (!bookingDate) {
-
         Swal.fire({
           icon: "warning",
           title: "Select Date",
           text: "Please select your delivery date.",
-          confirmButtonColor: "#159bc5"
+          confirmButtonColor: "#159bc5",
         });
 
         return;
-
       }
 
+      // Date cannot be before today
+      if (bookingDate < today) {
+        Swal.fire({
+          icon: "warning",
+          title: "Invalid Date",
+          text: "Please select today or a future date.",
+          confirmButtonColor: "#159bc5",
+        });
 
+        return;
+      }
+
+      // Time required
       if (!bookingTime) {
-
         Swal.fire({
           icon: "warning",
           title: "Select Time",
           text: "Please select your delivery time.",
-          confirmButtonColor: "#159bc5"
+          confirmButtonColor: "#159bc5",
         });
 
         return;
-
       }
 
-// same day future time
-
+      // If date is today, time must be future
       if (bookingDate === today) {
-
         const now = new Date();
 
-        const currentHours =
-          String(
-            now.getHours()
-          ).padStart(2, "0");
+        const currentHours = String(
+          now.getHours()
+        ).padStart(2, "0");
 
-        const currentMinutes =
-          String(
-            now.getMinutes()
-          ).padStart(2, "0");
+        const currentMinutes = String(
+          now.getMinutes()
+        ).padStart(2, "0");
 
-        const currentTime =
-          `${currentHours}:${currentMinutes}`;
+        const currentTime = `${currentHours}:${currentMinutes}`;
 
         if (bookingTime <= currentTime) {
-
           Swal.fire({
             icon: "warning",
             title: "Invalid Time",
             text: "Please select a future delivery time.",
-            confirmButtonColor: "#159bc5"
+            confirmButtonColor: "#159bc5",
           });
 
           return;
-
         }
-
       }
-
     }
 
-  //  customer data
+    // =======================================
+    // CUSTOMER DATA
+    // =======================================
 
     const customer = {
+      name: userDetails.name.trim(),
 
-      name:
-        userDetails.name.trim(),
+      mobile: mobileNumber,
 
-      mobile:
-        mobileNumber,
+      address: userDetails.address.trim(),
 
-      address:
-        userDetails.address.trim(),
-
-      location:
-        userDetails.location.trim(),
+      location: userDetails.location.trim(),
 
       currentLocation:
-        userDetails.currentLocation || ""
-
+        userDetails.currentLocation || "",
     };
 
-
+    // =======================================
     // SAVE USER
-   
+    // =======================================
 
     localStorage.setItem(
       "jalmitraUser",
       JSON.stringify(customer)
     );
 
-  //payment page
+    // =======================================
+    // GO TO PAYMENT
+    // =======================================
 
     navigate("/payment", {
-
       state: {
+        supplier: supplier,
 
-        supplier,
+        waterType: waterType,
 
-        waterType,
+        quantity: quantity,
 
-        quantity,
+        totalPrice: totalPrice,
 
-        totalPrice,
+        userDetails: customer,
 
-        userDetails:
-          customer,
-
-        // Delivery Type
-
-        deliveryType,
-
-        // Pre Booking Date
+        deliveryType: deliveryType,
 
         bookingDate:
           deliveryType === "prebook"
             ? bookingDate
             : null,
 
-        // Pre Booking Time
-
         bookingTime:
           deliveryType === "prebook"
             ? bookingTime
-            : null
-
-      }
-
+            : null,
+      },
     });
-
   };
 
-
+  // =========================================
+  // UI
+  // =========================================
 
   return (
-
     <div className="supplier-details-page">
 
-   {/* header */}
+      {/* =====================================
+          HEADER
+      ====================================== */}
 
       <div className="supplier-details-header">
 
         <button
-
+          type="button"
           onClick={() => {
-
             if (showOrderForm) {
-
               setShowOrderForm(false);
-
             } else {
-
               navigate("/search-bar");
-
             }
-
           }}
-
           className="back-button"
-
         >
-
           <FiArrowLeft />
-
         </button>
 
         <h2>
-
           {showOrderForm
             ? "Delivery Details"
             : "Supplier Details"}
-
         </h2>
-
       </div>
 
 
-  {/* supplier details */}
+      {/* =====================================
+          SUPPLIER DETAILS
+      ====================================== */}
 
       {!showOrderForm && (
-
         <>
 
           {/* SUPPLIER CARD */}
@@ -546,9 +486,7 @@ const SupplierDetails = () => {
             </p>
 
             <p className="supplier-distance">
-
               {supplier.distance} away
-
             </p>
 
           </div>
@@ -566,65 +504,53 @@ const SupplierDetails = () => {
 
             <div className="water-options">
 
-              {/* COLD */}
+              {/* COLD WATER */}
 
               {(supplier.water === "Both" ||
                 supplier.water === "Cold") && (
 
                 <button
-
                   type="button"
-
                   className={
                     waterType === "Cold"
                       ? "water-btn active"
                       : "water-btn"
                   }
-
                   onClick={() =>
                     setWaterType("Cold")
                   }
-
                 >
-
                   ❄️
 
                   <span>
                     Cold Water
                   </span>
-
                 </button>
 
               )}
 
 
-              {/* NORMAL */}
+              {/* NORMAL WATER */}
 
               {(supplier.water === "Both" ||
                 supplier.water === "Normal") && (
 
                 <button
-
                   type="button"
-
                   className={
                     waterType === "Normal"
                       ? "water-btn active"
                       : "water-btn"
                   }
-
                   onClick={() =>
                     setWaterType("Normal")
                   }
-
                 >
-
                   💧
 
                   <span>
                     Normal Water
                   </span>
-
                 </button>
 
               )}
@@ -647,11 +573,9 @@ const SupplierDetails = () => {
               </h3>
 
               <p>
-
                 {waterType === "Cold"
                   ? "Cold Drinking Water"
                   : "Normal Drinking Water"}
-
               </p>
 
             </div>
@@ -690,17 +614,11 @@ const SupplierDetails = () => {
             <div className="quantity-control">
 
               <button
-
                 type="button"
-
                 onClick={decreaseQuantity}
-
                 disabled={quantity === 1}
-
               >
-
                 <FaMinus />
-
               </button>
 
               <span>
@@ -708,15 +626,10 @@ const SupplierDetails = () => {
               </span>
 
               <button
-
                 type="button"
-
                 onClick={increaseQuantity}
-
               >
-
                 <FaPlus />
-
               </button>
 
             </div>
@@ -724,7 +637,9 @@ const SupplierDetails = () => {
           </div>
 
 
-      
+          {/* =================================
+              TOTAL
+          ================================== */}
 
           <div className="total-price-box">
 
@@ -755,28 +670,25 @@ const SupplierDetails = () => {
           </div>
 
 
-          {/* proceed */}
+          {/* =================================
+              PROCEED BUTTON
+          ================================== */}
 
           <button
-
             type="button"
-
             className="proceed-order-btn"
-
             onClick={handleProceedOrder}
-
           >
-
             Proceed to Order
-
           </button>
 
         </>
-
       )}
 
 
- {/* delivery form */}
+      {/* =====================================
+          DELIVERY FORM
+      ====================================== */}
 
       {showOrderForm && (
 
@@ -795,7 +707,9 @@ const SupplierDetails = () => {
           </div>
 
 
-   {/* delivery type */}
+          {/* =================================
+              DELIVERY TYPE
+          ================================== */}
 
           <div className="delivery-type-section">
 
@@ -808,25 +722,17 @@ const SupplierDetails = () => {
               {/* DELIVER NOW */}
 
               <button
-
                 type="button"
-
                 className={
                   deliveryType === "now"
                     ? "delivery-type-btn active"
                     : "delivery-type-btn"
                 }
-
                 onClick={() => {
-
                   setDeliveryType("now");
-
                   setBookingDate("");
-
                   setBookingTime("");
-
                 }}
-
               >
 
                 <span className="delivery-type-icon">
@@ -848,26 +754,22 @@ const SupplierDetails = () => {
               </button>
 
 
-              {/* PRE BOOK */}
+              {/* PRE-BOOK */}
 
               <button
-
                 type="button"
-
                 className={
                   deliveryType === "prebook"
                     ? "delivery-type-btn active"
                     : "delivery-type-btn"
                 }
-
                 onClick={() =>
                   setDeliveryType("prebook")
                 }
-
               >
 
                 <span className="delivery-type-icon">
-                  📑
+                  📅
                 </span>
 
                 <span className="delivery-type-info">
@@ -889,7 +791,9 @@ const SupplierDetails = () => {
           </div>
 
 
-       {/* prebook date+time  */}
+          {/* =================================
+              PRE-BOOK DATE & TIME
+          ================================== */}
 
           {deliveryType === "prebook" && (
 
@@ -904,19 +808,14 @@ const SupplierDetails = () => {
                 </label>
 
                 <input
-
                   type="date"
-
                   min={today}
-
                   value={bookingDate}
-
                   onChange={(e) =>
                     setBookingDate(
                       e.target.value
                     )
                   }
-
                 />
 
               </div>
@@ -931,17 +830,13 @@ const SupplierDetails = () => {
                 </label>
 
                 <input
-
                   type="time"
-
                   value={bookingTime}
-
                   onChange={(e) =>
                     setBookingTime(
                       e.target.value
                     )
                   }
-
                 />
 
               </div>
@@ -951,7 +846,9 @@ const SupplierDetails = () => {
           )}
 
 
-      {/* existing address */}
+          {/* =================================
+              EXISTING ADDRESS
+          ================================== */}
 
           {savedUser && (
 
@@ -982,7 +879,9 @@ const SupplierDetails = () => {
           )}
 
 
-     {/* customer form */}
+          {/* =================================
+              CUSTOMER FORM
+          ================================== */}
 
           <form
             onSubmit={handleOrderSubmit}
@@ -997,17 +896,11 @@ const SupplierDetails = () => {
               </label>
 
               <input
-
                 type="text"
-
                 name="name"
-
                 placeholder="Enter your name"
-
                 value={userDetails.name}
-
                 onChange={handleChange}
-
               />
 
             </div>
@@ -1022,19 +915,12 @@ const SupplierDetails = () => {
               </label>
 
               <input
-
                 type="tel"
-
                 name="mobile"
-
                 placeholder="Enter 10 digit mobile number"
-
                 value={userDetails.mobile}
-
                 maxLength={10}
-
                 inputMode="numeric"
-
                 onChange={(e) => {
 
                   const value =
@@ -1044,11 +930,10 @@ const SupplierDetails = () => {
 
                   setUserDetails((prev) => ({
                     ...prev,
-                    mobile: value
+                    mobile: value,
                   }));
 
                 }}
-
               />
 
               <small className="input-help">
@@ -1067,15 +952,10 @@ const SupplierDetails = () => {
               </label>
 
               <textarea
-
                 name="address"
-
                 placeholder="Enter your complete address"
-
                 value={userDetails.address}
-
                 onChange={handleChange}
-
               ></textarea>
 
             </div>
@@ -1090,17 +970,11 @@ const SupplierDetails = () => {
               </label>
 
               <input
-
                 type="text"
-
                 name="location"
-
                 placeholder="Example: Aliganj, Lucknow"
-
                 value={userDetails.location}
-
                 onChange={handleChange}
-
               />
 
             </div>
@@ -1117,53 +991,35 @@ const SupplierDetails = () => {
               </label>
 
               <button
-
                 type="button"
-
                 className="location-btn"
-
                 onClick={() => {
 
                   if (!navigator.geolocation) {
 
                     Swal.fire({
-
                       icon: "error",
-
                       title: "Not Supported",
-
                       text:
                         "Geolocation is not supported by your browser.",
-
                       confirmButtonColor:
-                        "#159bc5"
-
+                        "#159bc5",
                     });
 
                     return;
-
                   }
 
-
                   Swal.fire({
-
                     title:
                       "Getting Location...",
-
                     text:
                       "Please wait",
-
                     allowOutsideClick:
                       false,
-
                     didOpen: () => {
-
                       Swal.showLoading();
-
-                    }
-
+                    },
                   });
-
 
                   navigator.geolocation.getCurrentPosition(
 
@@ -1175,24 +1031,18 @@ const SupplierDetails = () => {
                       const longitude =
                         position.coords.longitude;
 
-
                       try {
 
                         const response =
                           await fetch(
-
                             `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${latitude}&lon=${longitude}`
-
                           );
-
 
                         const data =
                           await response.json();
 
-
                         const address =
                           data.address || {};
-
 
                         const readableAddress = [
 
@@ -1203,137 +1053,97 @@ const SupplierDetails = () => {
                           address.city ||
                           address.town,
 
-                          address.state
+                          address.state,
 
                         ]
-
                           .filter(Boolean)
-
                           .join(", ") ||
-
                           data.display_name ||
-
                           "Current Location";
-
 
                         setUserDetails(
                           (prev) => ({
-
                             ...prev,
-
                             currentLocation:
-                              readableAddress
-
+                              readableAddress,
                           })
                         );
 
-
                         Swal.fire({
-
                           icon: "success",
-
                           title:
                             "Location Detected",
-
                           text:
                             readableAddress,
-
                           confirmButtonText:
                             "OK",
-
                           confirmButtonColor:
-                            "#159bc5"
-
+                            "#159bc5",
                         });
-
 
                       } catch (error) {
 
                         const currentLocation =
-                          `${latitude.toFixed(6)}, ${longitude.toFixed(6)}`;
+                          `${latitude.toFixed(
+                            6
+                          )}, ${longitude.toFixed(
+                            6
+                          )}`;
 
                         setUserDetails(
                           (prev) => ({
-
                             ...prev,
-
-                            currentLocation
-
+                            currentLocation,
                           })
                         );
 
-
                         Swal.fire({
-
                           icon: "warning",
-
                           title:
                             "Location Found",
-
                           text:
                             "Address could not be loaded.",
-
                           confirmButtonText:
                             "OK",
-
                           confirmButtonColor:
-                            "#159bc5"
-
+                            "#159bc5",
                         });
-
                       }
-
                     },
 
                     () => {
 
                       Swal.fire({
-
                         icon: "error",
-
                         title:
                           "Location Error",
-
                         text:
                           "Unable to get your current location.",
-
                         confirmButtonColor:
-                          "#159bc5"
-
+                          "#159bc5",
                       });
 
                     },
 
                     {
-
                       enableHighAccuracy:
                         true,
-
                       timeout:
                         10000,
-
                       maximumAge:
-                        0
-
+                        0,
                     }
-
                   );
-
                 }}
-
               >
-
                 📍 Use Current Location
-
               </button>
 
 
               {userDetails.currentLocation && (
 
                 <p className="location-text">
-
                   {userDetails.currentLocation}
-
                 </p>
 
               )}
@@ -1403,7 +1213,8 @@ const SupplierDetails = () => {
                     </span>
 
                     <strong>
-                      {bookingDate || "Not Selected"}
+                      {bookingDate ||
+                        "Not Selected"}
                     </strong>
 
                   </div>
@@ -1416,7 +1227,8 @@ const SupplierDetails = () => {
                     </span>
 
                     <strong>
-                      {bookingTime || "Not Selected"}
+                      {bookingTime ||
+                        "Not Selected"}
                     </strong>
 
                   </div>
@@ -1442,21 +1254,16 @@ const SupplierDetails = () => {
 
 
             {/* =================================
-                PAYMENT BUTTON
+                CONTINUE BUTTON
             ================================== */}
 
             <button
-
               type="submit"
-
               className="continue-payment-btn"
-
             >
-
               {deliveryType === "prebook"
                 ? "Continue to Pre-Book"
                 : "Continue to Payment"}
-
             </button>
 
           </form>
@@ -1466,9 +1273,7 @@ const SupplierDetails = () => {
       )}
 
     </div>
-
   );
-
 };
 
 export default SupplierDetails;

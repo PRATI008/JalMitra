@@ -1,39 +1,57 @@
 import React, { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+
 import { FiArrowLeft } from "react-icons/fi";
 import { FaMoneyBillWave } from "react-icons/fa";
 import { FaCreditCard } from "react-icons/fa6";
+
 import Swal from "sweetalert2";
+
 import "../Pages/CSS/MyPayment.css";
+
 
 const MyPayment = () => {
 
   const navigate = useNavigate();
   const location = useLocation();
 
+  // Payment page par SupplierDetails se jo data aaya hai
   const orderData = location.state;
 
+
+  // Payment Method
   const [paymentMethod, setPaymentMethod] = useState("cod");
 
 
-  // Agar order data nahi mila
+  // ==========================================
+  // ORDER DATA NAHI MILA
+  // ==========================================
+
   if (!orderData) {
 
     return (
+
       <div className="payment-error">
 
         <h2>Order Details Not Found</h2>
 
-        <button onClick={() => navigate("/home")}>
+        <button
+          onClick={() => navigate("/home")}
+        >
           Go to Home
         </button>
 
       </div>
+
     );
+
   }
 
 
-  // Order data
+  // ==========================================
+  // ORDER DATA
+  // ==========================================
+
   const {
     supplier,
     waterType,
@@ -49,69 +67,133 @@ const MyPayment = () => {
   } = orderData;
 
 
+  // ==========================================
+  // ORDER PLACE FUNCTION
+  // ==========================================
 
-  // Order place karna
   const handleOrder = () => {
 
-    // New Order Object
+
+    // ========================================
+    // NEW ORDER OBJECT
+    // ========================================
+
     const newOrder = {
 
-      orderId: `JM${Date.now().toString().slice(-8)}`,
+      // Unique Order ID
+      orderId:
+        `JM${Date.now().toString().slice(-8)}`,
 
+
+      // Supplier
       supplier,
 
+
+      // Water Type
       waterType,
 
+
+      // Quantity
       quantity,
 
+
+      // Total Price
       totalPrice,
 
+
+      // Customer Details
       userDetails,
 
+
+      // Payment Method
       paymentMethod,
 
-      // Pre Booking
-      deliveryType: deliveryType || "now",
+
+      // ======================================
+      // PRE BOOKING DATA
+      // ======================================
+
+      deliveryType:
+        deliveryType || "now",
+
 
       bookingDate:
         deliveryType === "prebook"
           ? bookingDate
           : null,
 
+
       bookingTime:
         deliveryType === "prebook"
           ? bookingTime
           : null,
 
-      status: "Order Placed",
 
-      orderDate: new Date().toLocaleDateString(),
+      // ======================================
+      // ORDER STATUS
+      // ======================================
 
-      orderTime: new Date().toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit"
-      })
+      status: "Placed",
+
+
+      // Order Date
+      orderDate:
+        new Date().toLocaleDateString("en-IN"),
+
+
+      // Order Time
+      orderTime:
+        new Date().toLocaleTimeString(
+          "en-IN",
+          {
+            hour: "2-digit",
+            minute: "2-digit"
+          }
+        )
 
     };
 
 
-    // Order ko localStorage me save karna
+    // ==========================================
+    // SAVE ORDER IN LOCAL STORAGE
+    // ==========================================
+
     localStorage.setItem(
       "jalmitraOrder",
       JSON.stringify(newOrder)
     );
 
 
-    // Success popup
+    // ==========================================
+    // SAVE USER DETAILS
+    // ==========================================
+
+    if (userDetails) {
+
+      localStorage.setItem(
+        "jalmitraUser",
+        JSON.stringify(userDetails)
+      );
+
+    }
+
+
+    // ==========================================
+    // SUCCESS POPUP
+    // ==========================================
+
     Swal.fire({
 
       icon: "success",
 
-      title: "Order Placed!",
+      title:
+        deliveryType === "prebook"
+          ? "Pre-Booking Successful!"
+          : "Order Placed!",
 
       text:
         deliveryType === "prebook"
-          ? "Your water has been successfully pre-booked."
+          ? `Your water delivery is booked for ${bookingDate} at ${bookingTime}.`
           : "Your water order has been placed successfully.",
 
       confirmButtonText: "OK",
@@ -128,19 +210,22 @@ const MyPayment = () => {
 
         htmlContainer: "jalmitra-alert-text",
 
-        confirmButton: "jalmitra-alert-button"
+        confirmButton:
+          "jalmitra-alert-button"
 
       }
 
     }).then((result) => {
 
+
       if (result.isConfirmed) {
 
-        navigate("/order-comfirmation", {
-
-          state: newOrder
-
-        });
+        navigate(
+          "/order-comfirmation",
+          {
+            state: newOrder
+          }
+        );
 
       }
 
@@ -149,10 +234,17 @@ const MyPayment = () => {
   };
 
 
+  // ==========================================
+  // UI
+  // ==========================================
+
   return (
+
     <>
 
-      {/* Header */}
+      {/* =====================================
+          HEADER
+      ====================================== */}
 
       <div className="payment-header">
 
@@ -165,7 +257,10 @@ const MyPayment = () => {
 
         </button>
 
-        <h2>Payment</h2>
+
+        <h2>
+          Payment
+        </h2>
 
       </div>
 
@@ -174,20 +269,27 @@ const MyPayment = () => {
       <div className="payment-page">
 
 
-        {/* =========================
+        {/* =====================================
             ORDER SUMMARY
-        ========================== */}
+        ====================================== */}
 
         <div className="payment-section">
 
-          <h3>Order Summary</h3>
+          <h3>
+            Order Summary
+          </h3>
+
 
           <div className="payment-summary">
 
 
+            {/* Supplier */}
+
             <div className="summary-row">
 
-              <span>Supplier</span>
+              <span>
+                Supplier
+              </span>
 
               <strong>
                 {supplier.name}
@@ -196,9 +298,14 @@ const MyPayment = () => {
             </div>
 
 
+
+            {/* Water Type */}
+
             <div className="summary-row">
 
-              <span>Water Type</span>
+              <span>
+                Water Type
+              </span>
 
               <strong>
 
@@ -211,38 +318,48 @@ const MyPayment = () => {
             </div>
 
 
+
+            {/* Quantity */}
+
             <div className="summary-row">
 
-              <span>Quantity</span>
+              <span>
+                Quantity
+              </span>
 
               <strong>
-
                 {quantity} × 20L
-
               </strong>
 
             </div>
 
 
+
+            {/* Price */}
+
             <div className="summary-row">
 
-              <span>Price</span>
+              <span>
+                Price
+              </span>
 
               <strong>
-
                 ₹{supplier.price} / 20L
-
               </strong>
 
             </div>
 
 
 
-            {/* Delivery Type */}
+            {/* =================================
+                DELIVERY TYPE
+            ================================== */}
 
             <div className="summary-row">
 
-              <span>Delivery Type</span>
+              <span>
+                Delivery Type
+              </span>
 
               <strong>
 
@@ -256,7 +373,9 @@ const MyPayment = () => {
 
 
 
-            {/* Pre Booking Date */}
+            {/* =================================
+                PRE BOOK DATE
+            ================================== */}
 
             {deliveryType === "prebook" && (
 
@@ -264,7 +383,9 @@ const MyPayment = () => {
 
                 <div className="summary-row">
 
-                  <span>Delivery Date</span>
+                  <span>
+                    Delivery Date
+                  </span>
 
                   <strong>
                     📅 {bookingDate}
@@ -273,9 +394,12 @@ const MyPayment = () => {
                 </div>
 
 
+
                 <div className="summary-row">
 
-                  <span>Delivery Time</span>
+                  <span>
+                    Delivery Time
+                  </span>
 
                   <strong>
                     ⏰ {bookingTime}
@@ -289,9 +413,15 @@ const MyPayment = () => {
 
 
 
+            {/* =================================
+                TOTAL
+            ================================== */}
+
             <div className="summary-total">
 
-              <span>Total Amount</span>
+              <span>
+                Total Amount
+              </span>
 
               <strong>
                 ₹{totalPrice}
@@ -306,52 +436,70 @@ const MyPayment = () => {
 
 
 
-   {/* delivery details */}
+        {/* =====================================
+            DELIVERY DETAILS
+        ====================================== */}
 
         <div className="payment-section">
 
-          <h3>Delivery Details</h3>
+          <h3>
+            Delivery Details
+          </h3>
 
 
           <div className="delivery-card">
 
+
             <h4>
-              {userDetails.name}
+              {userDetails?.name || "Customer"}
             </h4>
 
 
             <p>
 
-              <strong>Mobile:</strong>{" "}
+              <strong>
+                Mobile:
+              </strong>{" "}
 
-              {userDetails.mobile}
-
-            </p>
-
-
-            <p>
-
-              <strong>Address:</strong>{" "}
-
-              {userDetails.address}
+              {userDetails?.mobile ||
+                "Not available"}
 
             </p>
 
 
             <p>
 
-              <strong>Location:</strong>{" "}
+              <strong>
+                Address:
+              </strong>{" "}
 
-              {userDetails.location}
+              {userDetails?.address ||
+                "Not available"}
 
             </p>
 
 
-            {userDetails.currentLocation && (
+            <p>
+
+              <strong>
+                Location:
+              </strong>{" "}
+
+              {userDetails?.location ||
+                "Not available"}
+
+            </p>
+
+
+            {/* Current Location */}
+
+            {userDetails?.currentLocation && (
 
               <p>
 
-                <strong>Current Location:</strong>{" "}
+                <strong>
+                  Current Location:
+                </strong>{" "}
 
                 {userDetails.currentLocation}
 
@@ -359,24 +507,31 @@ const MyPayment = () => {
 
             )}
 
-
           </div>
 
         </div>
 
 
 
-       {/* payment method */}
+        {/* =====================================
+            PAYMENT METHOD
+        ====================================== */}
 
         <div className="payment-section">
 
-          <h3>Select Payment Method</h3>
+          <h3>
+            Select Payment Method
+          </h3>
 
 
 
-          {/* COD */}
+          {/* =================================
+              CASH ON DELIVERY
+          ================================== */}
 
           <button
+
+            type="button"
 
             className={
               paymentMethod === "cod"
@@ -422,9 +577,13 @@ const MyPayment = () => {
 
 
 
-          {/* ONLINE */}
+          {/* =================================
+              ONLINE PAYMENT
+          ================================== */}
 
           <button
+
+            type="button"
 
             className={
               paymentMethod === "online"
@@ -472,9 +631,9 @@ const MyPayment = () => {
 
 
 
-        {/* =========================
-            BOTTOM
-        ========================== */}
+        {/* =====================================
+            BOTTOM PAYMENT
+        ====================================== */}
 
         <div className="payment-bottom">
 
@@ -492,7 +651,10 @@ const MyPayment = () => {
           </div>
 
 
+
           <button
+
+            type="button"
 
             className="order-now-btn"
 
@@ -513,8 +675,10 @@ const MyPayment = () => {
       </div>
 
     </>
+
   );
 
 };
+
 
 export default MyPayment;
