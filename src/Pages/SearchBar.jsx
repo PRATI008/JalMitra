@@ -20,7 +20,7 @@ const SearchBar = () => {
             location: "Aliganj, Lucknow",
             distance: "1.3 km",
             water: "Both",
-            price:30,
+            price:35,
             rating: 4.5
 
         },
@@ -75,7 +75,8 @@ const SearchBar = () => {
 
     return searchMatch && waterMatch;
 
-  });
+  })
+  .sort((a, b) => b.rating -a.rating);
 
  
   return (
